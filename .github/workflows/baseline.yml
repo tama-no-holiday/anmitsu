@@ -1,0 +1,63 @@
+# Fixture-only Android baseline, started by hand only. See docs/ci-baseline.md before running.
+name: baseline
+
+on:
+  workflow_dispatch:
+    inputs:
+      accept_android_sdk_licenses:
+        description: 'I (the repository owner) have already reviewed and accept the official Android SDK license terms'
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: baseline
+  cancel-in-progress: false
+
+jobs:
+  # With the input false the job is skipped: no runner, checkout or build.
+  baseline:
+    if: inputs.accept_android_sdk_licenses == true
+    runs-on: windows-2022
+    timeout-minutes: 35
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
+      - name: Setup pinned toolchain
+        id: setup
+        if: inputs.accept_android_sdk_licenses == true
+        shell: pwsh
+        run: pwsh -NoProfile -File scripts/setup-android.ps1 -AcceptAndroidSdkLicenses
+
+      - name: Fixture-only baseline (tests, lint, debug APK, package checks)
+        id: baseline
+        shell: pwsh
+        run: pwsh -NoProfile -File scripts/ci-baseline.ps1
+
+      - name: Summary
+        if: always()
+        shell: pwsh
+        env:
+          SETUP_OUTCOME: ${{ steps.setup.outcome }}
+          BASELINE_OUTCOME: ${{ steps.baseline.outcome }}
+        run: |
+          $lines = @(
+            '## Fixture-only baseline (NOT release quality)'
+            ''
+            "- setup: $env:SETUP_OUTCOME"
+            "- baseline: $env:BASELINE_OUTCOME"
+            '- Tasks: :core:test :oss-converter:test :app:testDebugUnitTest :app:assembleDebug :app:lintDebug, then package-android.ps1 -Version 1.0.0'
+            '- No OSS dictionary or zenz input. No ignoreFailures or retries are configured; whether tests and lint actually ran is given by the step outcomes above and the step logs.'
+            '- No official/release signing, upload or publishing. The debug APK (if built) is signed with the development (debug) key only.'
+          )
+          $report = 'artifacts/apk/ci-baseline-report.json'
+          if (Test-Path -LiteralPath $report) {
+            $lines += @('', '```json') + @(Get-Content -LiteralPath $report) + @('```')
+          }
+          $lines | Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY -Encoding utf8
