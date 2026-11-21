@@ -1,0 +1,10 @@
+UT import: rows=1459000 readings=1290811
+source sudachidict: read=1285149 kept=905712 duplicateOfBase=313626 duplicateOfPriorExtra=52674 duplicateOfEarlierSource=0 duplicateWithinSource=12741 rejected=396 raisedToFloor=905712 raisedRelative=264
+  rejected READING=395 firstLines=[1247, 3653, 3985, 4337, 10105, 14848, 14910, 23817, 25757, 28738]
+  rejected UNICODE=1 firstLines=[458764]
+source neologd: read=1546041 kept=499602 duplicateOfBase=66846 duplicateOfPriorExtra=3081 duplicateOfEarlierSource=967344 duplicateWithinSource=7587 rejected=1581 raisedToFloor=499602 raisedRelative=79
+  rejected READING=1572 firstLines=[1512, 4407, 4765, 4965, 5131, 12662, 12732, 12926, 13182, 19443]
+  rejected SURFACE=1 firstLines=[1256539]
+  rejected UNICODE=8 firstLines=[23557, 260941, 320629, 561601, 785739, 809537, 931383, 1136840]
+source personal-names: read=87280 kept=53686 duplicateOfBase=1067 duplicateOfPriorExtra=0 duplicateOfEarlierSource=32512 duplicateWithinSource=15 rejected=0 raisedToFloor=53686 raisedRelative=7
+kept counts unique (reading, surface) pairs added to the engine, not source rows.

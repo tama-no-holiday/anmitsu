@@ -1,0 +1,20 @@
+{"id":"oss-thanks","kind":"clean","input":"ありがとう","surfaces":["ありがとう","有難う"],"forbidden":["ある学校"]}
+{"id":"oss-greeting","kind":"clean","input":"こんにちは","surfaces":["こんにちは"]}
+{"id":"oss-station","kind":"clean","input":"とうきょうえき","surfaces":["東京駅"]}
+{"id":"oss-phone","kind":"clean","input":"すまーとふぉん","surfaces":["スマートフォン"]}
+{"id":"oss-next-week","kind":"clean","input":"らいしゅうのすいようび","surfaces":["来週の水曜日"]}
+{"id":"oss-documents","kind":"clean","input":"しりょうをかくにんしてください","surfaces":["資料を確認してください","資料を確認して下さい"]}
+{"id":"oss-reservation","kind":"clean","input":"よやくをへんこうしたいです","surfaces":["予約を変更したいです"]}
+{"id":"oss-weather","kind":"clean","input":"あしたのてんきよほう","surfaces":["明日の天気予報"]}
+{"id":"oss-supermarket","kind":"clean","input":"すーぱーでぎゅうにゅうをかいました","surfaces":["スーパーで牛乳を買いました"]}
+{"id":"oss-computer","kind":"clean","input":"ぱそこんをさいきどうする","surfaces":["パソコンを再起動する"]}
+{"id":"oss-meeting","kind":"clean","input":"かいぎはさんじからです","surfaces":["会議は三時からです","会議は3時からです"]}
+{"id":"oss-post","kind":"clean","input":"ゆうびんきょくにいきます","surfaces":["郵便局に行きます"]}
+{"id":"oss-packing","kind":"clean","input":"にもつがとどきました","surfaces":["荷物が届きました"]}
+{"id":"oss-battery","kind":"clean","input":"でんちのざんりょう","surfaces":["電池の残量"]}
+{"id":"oss-weekend","kind":"clean","input":"しゅうまつはとしょかんにいきます","surfaces":["週末は図書館に行きます"]}
+{"id":"oss-unknown-one","kind":"unknown","input":"ぬめぴこ","surfaces":["ぬめぴこ"]}
+{"id":"oss-unknown-two","kind":"unknown","input":"るぴぴあ","surfaces":["るぴぴあ"]}
+{"id":"oss-unknown-three","kind":"unknown","input":"みゅらのZ","surfaces":["みゅらのZ"]}
+{"id":"oss-emoji","kind":"mixed","input":"ありがとう😀","surfaces":["ありがとう😀","有難う😀"]}
+{"id":"oss-ascii","kind":"mixed","input":"Pixel 7 Pro","surfaces":["Pixel 7 Pro"]}

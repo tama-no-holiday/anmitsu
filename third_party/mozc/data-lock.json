@@ -1,0 +1,111 @@
+{
+  "repository": "https://github.com/google/mozc",
+  "revision": "d766d25d253141eff71e25c593aaf753f8d91cee",
+  "files": [
+    {
+      "path": "src/data/dictionary_oss/dictionary00.txt",
+      "file": "dictionary00.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/dictionary00.txt",
+      "bytes": 7157174,
+      "sha256": "9e07ce292932c4fff327ed8cb06274c09acca556bd8bdf7c7ef1f6173eae3b61"
+    },
+    {
+      "path": "src/data/dictionary_oss/dictionary01.txt",
+      "file": "dictionary01.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/dictionary01.txt",
+      "bytes": 6428663,
+      "sha256": "836fd5fd8399510de0d8ef7b33be913cca6bbaee7b712cc8045fba03f4c75a89"
+    },
+    {
+      "path": "src/data/dictionary_oss/dictionary02.txt",
+      "file": "dictionary02.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/dictionary02.txt",
+      "bytes": 6480134,
+      "sha256": "93943858d0cfd092b849a78def6901eaf228177e1ac5663544e865a3a1e45a9e"
+    },
+    {
+      "path": "src/data/dictionary_oss/dictionary03.txt",
+      "file": "dictionary03.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/dictionary03.txt",
+      "bytes": 7434257,
+      "sha256": "cb9f1b0b4a7550d682d86244a021cd17e0b15366328819e69135b5f183a1a24b"
+    },
+    {
+      "path": "src/data/dictionary_oss/dictionary04.txt",
+      "file": "dictionary04.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/dictionary04.txt",
+      "bytes": 5399172,
+      "sha256": "9fdc4e3948d03463de13ab5782adffbc11dd06e934cb80138c5920029cd3d2f6"
+    },
+    {
+      "path": "src/data/dictionary_oss/dictionary05.txt",
+      "file": "dictionary05.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/dictionary05.txt",
+      "bytes": 5316454,
+      "sha256": "199e3b0f050b691823ae7ba943090d437f51af6436b27c5f3dc69cafa12000e4"
+    },
+    {
+      "path": "src/data/dictionary_oss/dictionary06.txt",
+      "file": "dictionary06.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/dictionary06.txt",
+      "bytes": 5373350,
+      "sha256": "b95b14f7770ae2a824bc8e9fad8b03c1bc45c504f93a36554b8b56daa0368d2a"
+    },
+    {
+      "path": "src/data/dictionary_oss/dictionary07.txt",
+      "file": "dictionary07.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/dictionary07.txt",
+      "bytes": 5315756,
+      "sha256": "7f53649b529d4c8c495d3a8dd9c4d489dfe7696080f7423107ff01331174be48"
+    },
+    {
+      "path": "src/data/dictionary_oss/dictionary08.txt",
+      "file": "dictionary08.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/dictionary08.txt",
+      "bytes": 4887114,
+      "sha256": "50a31bb5fc1646721b00be371a5695dffab1292bda143e1e59cc70cbbdd8643f"
+    },
+    {
+      "path": "src/data/dictionary_oss/dictionary09.txt",
+      "file": "dictionary09.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/dictionary09.txt",
+      "bytes": 6690572,
+      "sha256": "4e5fcd4cbfbf11395166a37b506f547fc54d20edc0884f5184ecd3fc705f0d9a"
+    },
+    {
+      "path": "src/data/dictionary_oss/suffix.txt",
+      "file": "suffix.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/suffix.txt",
+      "bytes": 39893,
+      "sha256": "37ace4c057615a10c2e06e19e57010916390b0709f0156d1ee17ce82f3272dd9"
+    },
+    {
+      "path": "src/data/dictionary_oss/id.def",
+      "file": "id.def",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/id.def",
+      "bytes": 151747,
+      "sha256": "07a05a268c3783b7e02b36e4aa591555a2dd19a1f3c93891576740761c154f2d"
+    },
+    {
+      "path": "src/data/dictionary_oss/connection_single_column.txt",
+      "file": "connection_single_column.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/connection_single_column.txt",
+      "bytes": 36428642,
+      "sha256": "68823a1f6617372ccb89afdbcb334d7a0bcfa82c9c5dda03fc1f80f1cab5c48e"
+    },
+    {
+      "path": "src/data/dictionary_oss/README.txt",
+      "file": "README.txt",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/src/data/dictionary_oss/README.txt",
+      "bytes": 5750,
+      "sha256": "6b1de66bc6fa30e0b45dc45b8c8f6c57bd78aff923c261a3efffac8eb86f7bac"
+    },
+    {
+      "path": "LICENSE",
+      "file": "LICENSE",
+      "url": "https://raw.githubusercontent.com/google/mozc/d766d25d253141eff71e25c593aaf753f8d91cee/LICENSE",
+      "bytes": 5734,
+      "sha256": "44cdd923b91ea9199293abecc2762c70c87dbf1e581c027a94c416368d1a648c"
+    }
+  ]
+}

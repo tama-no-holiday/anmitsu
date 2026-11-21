@@ -1,0 +1,7 @@
+# Upstream conversion code snapshot
+
+Selected unmodified MIT code from [KazumaProject/kotlin-kana-kanji-converter](https://github.com/KazumaProject/kotlin-kana-kanji-converter), pinned in `source-lock.json`. Copyright and full license are in `upstream/LICENSE`; include them in any derived distribution. Individual upstream byte hashes are recorded before adaptation.
+
+This is an evaluation of an existing Kotlin converter, not the official Mozc engine or Zenzai. Its LOUDS lookup, connection costs and path search can consume compiled Mozc dictionary data without inventing a new converter. Only the converter/building primitives are included. Upstream app UI, release workflows, downloaded binaries, custom vocabulary, ATOK-named data and optional expanded dictionaries are not included. Mozc standard data will be acquired separately at a pinned revision with its original notices. No model is included here.
+
+Keep upstream files unchanged where possible; place project-specific adapters/build tools outside `upstream/`. Record necessary patches and updated hashes explicitly. Two minimal patches are applied to `TokenArray.kt` (`getNodeIdForDictionary`, exact surface preservation; `setLoadedColumns`, compact loaded columns); see `PATCHES.md`. Original hashes stay in `source-lock.json` `files`, patched hashes are under `patchedFiles`. Do not execute upstream Gradle/download scripts: this project provides its own minimal build integration.

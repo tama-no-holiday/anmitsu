@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">anmitsu</string>
+    <string name="ime_name">anmitsu</string>
+    <string name="subtype_label">日本語 (12キー)</string>
+
+    <string name="status_converting">…</string>
+    <string name="panel_prediction">予測・補正</string>
+    <string name="panel_prediction_none">予測はありません</string>
+    <string name="panel_exact_title">変換</string>
+    <string name="panel_exact_loading">変換 …</string>
+    <string name="panel_shrink">縮小</string>
+    <string name="panel_expand_group">%1$sを広げる</string>
+    <string name="panel_shrink_group">%1$sを縮小して戻す</string>
+    <string name="clip_paste">クリップボードから貼り付け: %1$s</string>
+    <string name="segment_button">文節: %1$s</string>
+
+    <string name="layout_to_full">⌨→QWERTY</string>
+    <string name="layout_to_12key">⌨→12キー</string>
+
+    <!-- Setup screen: header and getting started -->
+    <string name="setup_title">anmitsu</string>
+    <string name="setup_tagline">あんみつは、オフラインで動く日本語キーボードです。入力した文字はどこにも送信しません。</string>
+    <string name="setup_section_start">はじめに</string>
+    <string name="setup_status_disabled">まだ有効になっていません。下の「1」から「anmitsu」をオンにしてください。</string>
+    <string name="setup_status_enabled">有効になっています。「2」でこのキーボードに切り替えてください。</string>
+    <string name="setup_status_selected">このキーボードを使っています。</string>
+    <string name="setup_dictionary_failed">辞書を読み込めなかったため、小さな内蔵辞書で変換しています。アプリを入れ直すと直る場合があります。</string>
+    <string name="setup_enable">1. キーボードの設定を開いて有効にする</string>
+    <string name="setup_switch">2. このキーボードに切り替える</string>
+    <string name="setup_try_label">ここで試せます（入力した内容は保存されません）</string>
+    <string name="setup_try_hint">タップして入力（例: わがし）</string>
+
+    <!-- Setup screen: how to use (each section: title, picture, points) -->
+    <string name="setup_section_guide">使い方</string>
+    <string name="guide_pictures_note">図は説明用のイラストです。実際の候補は入力内容や学習によって変わります。</string>
+    <string name="guide_kana_title">かなを入力する</string>
+    <string-array name="guide_kana_items">
+        <item>キーをタップすると「あ段」、上下左右にフリックすると「い・う・え・お段」が入ります。</item>
+        <item>「小゛゜」で濁点・半濁点・小さい文字に切り替えます。</item>
+        <item>「や」を左右にフリックすると「」が入ります。</item>
+        <item>入力中は空白キーが「変換」、改行キーが「確定」になります。</item>
+    </string-array>
+    <string name="guide_convert_title">変換する</string>
+    <string-array name="guide_convert_items">
+        <item>打つと、いちばん有力な変換がそのまま表示されます（ライブ変換）。「確定」で入力します。</item>
+        <item>候補欄には、左に文節ごとのボタン、区切り線の右に候補が並びます。候補をタップすると、その候補で入力します。かなのままの候補も並びます。</item>
+        <item>「変換」を押すと次の候補に切り替わります。ライブ変換がオフのときは、かなのまま表示され、「変換」を押すまでは左端のかなをタップするとかなのまま入力します。</item>
+        <item>候補欄右端の ▼ で全候補を開きます。上が「予測・補正」、下が「変換」で、見出しをタップするとその欄だけを大きく表示します。</item>
+    </string-array>
+    <string name="guide_segments_title">文節を選んで直す</string>
+    <string-array name="guide_segments_items">
+        <item>変換が表示されると、候補欄の左に文節ごとのボタンが並びます（ライブ変換がオフのときは「変換」か ▼ を押した後）。</item>
+        <item>ボタンをタップすると、その文節だけの候補が出ます。選ぶとその文節だけが変わります。</item>
+        <item>文節を選んでいる間は ◀ で文節を1文字縮め、▶ で1文字伸ばします（例: 読みの「あず」を ▶ で「あずき」にすると「小豆」に）。</item>
+        <item>そのまま入力を続けたり「確定」したりすると、直したとおりに残ります。入力中の文字を直接タップしても文節を選べます。</item>
+    </string-array>
+    <string name="guide_symbols_title">記号・数字・顔文字</string>
+    <string-array name="guide_symbols_items">
+        <item>読みで記号に変換できます: 「かっこ」→「」（）【】、「やじるし」→ →←↑↓、「まる」→ ○●◎、「ほし」→ ☆★。</item>
+        <item>「」などの記号を入力して変換すると、ほかのかっこや全角・半角の形が出ます。</item>
+        <item>「かおもじ」で顔文字、「えもじ」で絵文字、「ねこ」→ 🐱 のように読みからも出ます。</item>
+        <item>漢字1文字の候補は ▼ の「変換」にすべて並びます。</item>
+    </string-array>
+    <string name="guide_english_title">英字・数字</string>
+    <string-array name="guide_english_items">
+        <item>左下のキーをタップすると かな ⇄ 英字 が切り替わります。長押しすると数字の画面になります。</item>
+        <item>英字12キーはタップで1文字目、左・上・右のフリックで次の文字、下フリックで数字です（abc → 2）。</item>
+        <item>下フリックで入力した数字は ①・一・Ⅰ などに変換できます。</item>
+        <item>「@」キーの右フリックでハイフン、「\'」キーの左フリックでアンダーバー。QWERTYでは「.」キーの左右フリックです。</item>
+        <item>英単語は未確定のまま表示され、候補に別の表記（azuki → AZUKI など）が出ます。▼で候補を一覧できます。記号・数字・絵文字を続けても未確定のままで、「確定」か空白で入力します（「確定」は確定だけで、改行や検索は次に押したときです）。入力中の「a→A」は最後の1文字だけを大文字・小文字に切り替えます。何も入力していないときの「a/A」は次の1文字を大文字にします。</item>
+        <item>候補欄の「⌨→QWERTY」「⌨→12キー」で配列を切り替えられます。</item>
+    </string-array>
+    <string name="guide_more_title">カーソル・一覧・クリップボード</string>
+    <string-array name="guide_more_items">
+        <item>◀ ▶ でカーソルが動きます（入力中は表示どおりに確定してから動きます）。上下にフリックすると上下に動きます。</item>
+        <item>左の列の「記号」「絵文字」で一覧を開きます。指を離した位置の記号だけが入力されます。</item>
+        <item>コピーした文字は、何も入力していないときに候補欄に出ます。タップすると貼り付けます。</item>
+    </string-array>
+
+    <!-- Setup screen: settings -->
+    <string name="setup_section_settings">設定</string>
+    <string name="setup_live_toggle">ライブ変換</string>
+    <string name="setup_live_note">打ちながら変換結果を表示します。オフにすると、かなのまま表示し「変換」で候補を出します。</string>
+    <string name="setup_correction_toggle">打ち間違いの補正候補を出す</string>
+    <string name="setup_correction_note">フリックの方向違いや隣のキー、濁点・小さい文字の付け忘れを直した候補も出します。入力どおりの候補は常に残ります。</string>
+    <string name="setup_zenz_toggle">AIで文全体から候補を選ぶ</string>
+    <string name="setup_zenz_note">端末内の小さな日本語モデルが文全体を読み、自然な候補を上に出します。後から打った言葉で前の変換が変わることがあります。動作が重いときはオフにしてください。</string>
+    <string name="setup_context_toggle">確定済みの前の文も見て候補を選ぶ</string>
+    <string name="setup_context_note">同じ入力欄のカーソルの前にある確定済みの文字（最大40文字）を、AIが候補の順番を決めるときに端末内で一時的に使います。変換を始める最初のキーで、入力欄にカーソルの前の文字を一度問い合わせます（待つのは最大0.1秒。遅いアプリでは問い合わせを30秒やめます）。答えがないときは、入力欄を開いたときに渡される文字と、このキーボードで確定した文字を使います。カーソルを戻したときにその前の文字が分かるよう、これらを最大512文字までメモリに置きます。分からない位置では使いません。保存・学習・送信はせず、入力欄を離れる、キーボードを閉じる、範囲を選ぶ、貼り付ける、などで忘れます。学習とは別の設定で、学習をオフにしてもこの機能は別に動きます。パスワード欄、シークレットモード、URL・メールアドレスの欄では使いません。</string>
+    <string name="setup_layout_title">英字・数字のキー配列</string>
+    <string name="setup_english_12key">英字を12キー（フリック）で入力する（オフ: QWERTY）</string>
+    <string name="setup_numeric_12key">数字を12キー（電話型）で入力する（オフ: 横並びの数字・記号）</string>
+    <string name="setup_theme_title">キーボードの色</string>
+    <string name="setup_theme_white">ホワイト（標準）</string>
+    <string name="setup_theme_gray">グレー</string>
+    <string name="setup_theme_dark">ダーク</string>
+    <string name="setup_theme_azuki">AZUKI（小豆）</string>
+    <string name="setup_theme_anmitsu">anmitsu（あんみつ）</string>
+    <string name="setup_learning_toggle">学習（選んだ変換を次から優先・予測に使う）</string>
+    <string name="setup_learning_note">確定した読みと語をこの端末だけに記録し、次から上位に出します。打ちかけの読みから以前確定した文も候補に出します。記録するのは自分で確定した変換だけで、入力欄の周りの文章は記録せず、職業や興味などの推測もしません。記号・絵文字の「履歴」（入力に使った記号・絵文字、各32個まで）も学習の一部で、オフのときやパスワード欄・シークレットモードでは記録も表示もしません。オフにすると記録も利用も止まります。「学習内容を消去する」で履歴も消えます。</string>
+    <string name="setup_learning_count">学習済み: %1$d件</string>
+    <string name="setup_learning_clear">学習内容を消去する</string>
+    <string name="palette_history_empty">履歴はまだありません。使った記号・絵文字がここに並びます</string>
+    <string name="setup_register_title">単語登録</string>
+    <string name="setup_register_note">辞書にない語や英語表記を登録できます（例: あんみつ → anmitsu）。</string>
+    <string name="setup_register_reading">読み（ひらがな）</string>
+    <string name="setup_register_surface">単語（例: anmitsu）</string>
+    <string name="setup_register_add">登録する</string>
+    <string name="setup_register_delete">削除</string>
+    <string name="setup_register_item">%1$s → %2$s</string>
+    <string name="setup_register_invalid">読みはひらがな（またはカタカナ）、単語は64文字以内で入力してください。</string>
+
+    <!-- Setup screen: privacy, licenses, version -->
+    <string name="setup_section_privacy">プライバシー</string>
+    <string-array name="setup_privacy_items">
+        <item>インターネットの権限がなく、何も送信しません。</item>
+        <item>保存するのは、学習がオンのときに確定した変換（読みと語）、入力に使った記号・絵文字の履歴、登録した単語だけです。この端末のアプリ内に置き、バックアップにも含めません。</item>
+        <item>パスワード欄では変換も学習もせず、そのまま入力します。</item>
+        <item>シークレットモードやURL・メールアドレスの欄では、学習の記録も利用もしません。</item>
+        <item>入力欄に問い合わせたカーソルの前の文字、入力欄を開いたときに渡される文字、このキーボードで確定した文字を、候補の順番を決めるためだけに一時的に使います。「確定済みの前の文も見て候補を選ぶ」でオフにできます。保存・学習・送信はしません。</item>
+        <item>クリップボードの文字は、貼り付け用の表示を出すためだけに読み、保存・送信しません。機密として印の付いたコピーは表示しません。</item>
+    </string-array>
+    <string name="setup_section_licenses">オープンソースライセンス</string>
+    <string name="setup_licenses_note">辞書（Mozc・Mozc-UT・SudachiDict）、変換部品、AIモデル（zenz）などのライセンスです。</string>
+    <string name="setup_licenses_open">ライセンスを表示</string>
+    <string name="setup_version">バージョン %1$s</string>
+    <string name="setup_close">閉じる</string>
+</resources>

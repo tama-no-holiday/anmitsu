@@ -1,0 +1,138 @@
+{
+  "repository": "https://github.com/KazumaProject/kotlin-kana-kanji-converter",
+  "revision": "13e391bc7a4a245f63aa0091c1e9c11db3dbd759",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "aaf20587d23bc728fba86f3ba0253ffcb40f3443c1d3591f4fcbe832a56b3add"
+    },
+    {
+      "path": "src/main/kotlin/Extenstions.kt",
+      "sha256": "a40611971c15f6bbca3ad1419ad8e456ea7d31c1dfc9f8fe8cbf7e32932e452a"
+    },
+    {
+      "path": "src/main/kotlin/bitset/Extensions.kt",
+      "sha256": "41fbc1e96d7978ee47a0b5e386b0e56cc6b2f6a807d49136a9c3bbcade2cfa0f"
+    },
+    {
+      "path": "src/main/kotlin/bitset/SuccinctBitVector.kt",
+      "sha256": "6cedd9fca88ff9f34a64a2f8fb39d7c5be285cc4561c62a792a91b259d8cbc5e"
+    },
+    {
+      "path": "src/main/kotlin/connection_id/ConnectionIdBuilder.kt",
+      "sha256": "7c7c43336d2e12a5ec28173d2e7f06c81990e7ccc94a0920b0f0e5780e57b76e"
+    },
+    {
+      "path": "src/main/kotlin/connection_id/Extensions.kt",
+      "sha256": "bb6c25248980bead0a575d4f56cbc86f5ecf1718fc2ef50b130387e0e50fa060"
+    },
+    {
+      "path": "src/main/kotlin/dictionary/DicUtils.kt",
+      "sha256": "6f3e52101939a0363badfd0be860fd9447a77947436961147f4de18b35e955f9"
+    },
+    {
+      "path": "src/main/kotlin/dictionary/TokenArray.kt",
+      "sha256": "78f10dcebd521f4db02c23b555dd5311ad7db85e5026a689678fcce947102c10"
+    },
+    {
+      "path": "src/main/kotlin/dictionary/models/Dictionary.kt",
+      "sha256": "04bca99302299ccff12f0a12606cace9212ab2f3182f3de3f4c581e20c62e7ef"
+    },
+    {
+      "path": "src/main/kotlin/dictionary/models/TokenEntry.kt",
+      "sha256": "ae4ac20f89f8e831e0b0e627a66d58e004dd0f0d2402d747b12c3a9dcc0919dd"
+    },
+    {
+      "path": "src/main/kotlin/dictionary/models/TokenEntryConverted.kt",
+      "sha256": "1d2e0d164a187850a62de6bd9832163c05fecc34306c4c6bdbffb204795e94f8"
+    },
+    {
+      "path": "src/main/kotlin/engine/ConversionResult.kt",
+      "sha256": "ed31f9d147c2daa1124afb8a1f0e45ffd91cfcfb1b3b70d270cca0c249c1a27d"
+    },
+    {
+      "path": "src/main/kotlin/engine/KanaKanjiEngine.kt",
+      "sha256": "32be2fce8de6c8f38863ecae00e0854862c0a399655ac11271f2cf82b2d577f0"
+    },
+    {
+      "path": "src/main/kotlin/graph/GraphBuilder.kt",
+      "sha256": "44001cc85f47c9fbbed3e50ca4c8757b87505d5f6ec7bfcaeec2a66835265fae"
+    },
+    {
+      "path": "src/main/kotlin/graph/Node.kt",
+      "sha256": "be167f2ed459e0f4ab79448474ae60a788b0f48aed55916048c0cb2ea7f1530a"
+    },
+    {
+      "path": "src/main/kotlin/louds/Converter.kt",
+      "sha256": "23acd2c2fabed795cf9843e87324b39edc83d06e2b3c34b95c01d124df058d06"
+    },
+    {
+      "path": "src/main/kotlin/louds/LOUDS.kt",
+      "sha256": "2c20451fe93cdd99b5a37647f7c1a801db8559ee9e7f36642d8091e7aac9407c"
+    },
+    {
+      "path": "src/main/kotlin/louds/with_term_id/ConverterWithTermId.kt",
+      "sha256": "ca8d90cc4caab843af5e286e12a49fc3c4ec31c01fdd9f01d099af2bdfd7d837"
+    },
+    {
+      "path": "src/main/kotlin/louds/with_term_id/LOUDSWithTermId.kt",
+      "sha256": "244debcf75dbaffdff200db67b5c02b8a880f14795024562d0197d7e74e30c98"
+    },
+    {
+      "path": "src/main/kotlin/mozc/ConnectionMatrix.kt",
+      "sha256": "05691745c7fe1f95010fc9119d0f637e9b9c260c19695876c6640376f5ec5ddb"
+    },
+    {
+      "path": "src/main/kotlin/ngram/NgramModel.kt",
+      "sha256": "d4c7ce6c26e7fb5019604d8173417eb34b56742e35c80aa239f98fef971e782b"
+    },
+    {
+      "path": "src/main/kotlin/ngram/SystemNgramDictionary.kt",
+      "sha256": "77af698a1a958f1f23a6238a5db9d73ecd593a5ed2ba1c952d54bda881f34966"
+    },
+    {
+      "path": "src/main/kotlin/path_algorithm/FindPath.kt",
+      "sha256": "272f3250752fda6312af1511b995ba840646825ae649d926fa39493218a9ee4d"
+    },
+    {
+      "path": "src/main/kotlin/prefix/PrefixNode.kt",
+      "sha256": "8c34b6e95658a77327446ce507b091eb41d88548e9cc144771c48fda701cc31e"
+    },
+    {
+      "path": "src/main/kotlin/prefix/PrefixTree.kt",
+      "sha256": "2b94529141ef32d3916de2d933c1687a7b5e100b3842d7f331ec511527b72549"
+    },
+    {
+      "path": "src/main/kotlin/prefix/with_term_id/PrefixNodeWithTermId.kt",
+      "sha256": "19d0826c6f9d7ec029eec1923581f7a51e8dd3eaa071d200136cd03e1f14ca06"
+    },
+    {
+      "path": "src/main/kotlin/prefix/with_term_id/PrefixTreeWithTermId.kt",
+      "sha256": "0c058dbd7861bfd23f3a53d782e23573f4171550b19ba22a7e7942276b16ab1e"
+    },
+    {
+      "path": "src/main/kotlin/stream/ArraysStream.kt",
+      "sha256": "71e9a056a42d94fdfe0612fe18723f534b1219993e779cdce4ea3c93141c607e"
+    },
+    {
+      "path": "src/main/kotlin/Other.kt",
+      "sha256": "177df867df16e8605a97f21588d6626c03f88c55dc203e390afa89cb5ed6a7cb"
+    },
+    {
+      "path": "src/main/kotlin/DictionaryBuilder.kt",
+      "sha256": "31c63dc0d0f62d6fed6855b0c3075665439d78091f07834218e245ece33789b3"
+    },
+    {
+      "path": "src/main/kotlin/single_kanji/SingleKanjiBuilder.kt",
+      "sha256": "c32488fa47b49eb3aed4a7f9a07ef09c270720d5452c577e046a7ff61b21efac"
+    }
+  ],
+  "patchedFiles": [
+    {
+      "path": "src/main/kotlin/dictionary/TokenArray.kt",
+      "originalSha256": "78f10dcebd521f4db02c23b555dd5311ad7db85e5026a689678fcce947102c10",
+      "patchedSha256": "8dc75924b5cdb1d11cd02afcfa7a9780fba5fcd682fee8196bda342d6edced0d",
+      "notes": "PATCHES.md section 1: getNodeIdForDictionary keeps exact surfaces; section 2: setLoadedColumns for compact loaded columns (section 1 only: 4906145ad0776bafa12e95454accbbcb6c7885d0332870c0d06e0850711d7bdb)"
+    }
+  ]
+}

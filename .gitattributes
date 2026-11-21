@@ -1,0 +1,9 @@
+# Vendored source hashes refer to original bytes, independent of Windows checkout policy.
+third_party/** -text
+# Generated English index: its SHA-256 refers to the LF bytes the builder wrote.
+android/app/src/main/assets/english/** -text
+# Shipped as they are: 0.1.25's checkout-made CRLF changed these two APK assets.
+android/app/src/main/assets/supplement/** -text
+android/app/oss-assets.lock -text
+# Locked evaluation set: manifest.json hashes these LF bytes.
+data/context-holdout/** -text

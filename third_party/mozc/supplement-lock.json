@@ -1,0 +1,43 @@
+{
+  "repository": "https://github.com/google/mozc",
+  "revision": "d766d25d253141eff71e25c593aaf753f8d91cee",
+  "license": "BSD-3-Clause (LICENSE in this directory; same revision as data-lock.json)",
+  "files": [
+    {
+      "path": "src/data/symbol/symbol.tsv",
+      "file": "symbol.tsv",
+      "bytes": 148756,
+      "sha256": "bc68b032a195f203dccba6f95667424199ba9b185fee2be64eeaa959253c097a"
+    },
+    {
+      "path": "src/data/symbol/categorized.tsv",
+      "file": "symbol-categorized.tsv",
+      "bytes": 20256,
+      "sha256": "af8a5e36f90e6a916e965d281bfb86172adff09a3a95e3f1d04fffea7ee5f079"
+    },
+    {
+      "path": "src/data/emoticon/emoticon.tsv",
+      "file": "emoticon.tsv",
+      "bytes": 19028,
+      "sha256": "366558b380bef07dda26822c9100d1efabee539f7961b2c6363d4614c4a762c4"
+    },
+    {
+      "path": "src/data/emoticon/categorized.tsv",
+      "file": "emoticon-categorized.tsv",
+      "bytes": 10117,
+      "sha256": "4497c16a706de418b05e73eaddbce13e5d3390e7c2de71200b28c0c97ae5c4fc"
+    },
+    {
+      "path": "src/data/emoji/emoji_data.tsv",
+      "file": "emoji_data.tsv",
+      "bytes": 307153,
+      "sha256": "cd469564e1cc4e5ec4dc4035cde38568e86da4528849ca7374c96bf628160572"
+    },
+    {
+      "path": "src/data/single_kanji/single_kanji.tsv",
+      "file": "single_kanji.tsv",
+      "bytes": 108795,
+      "sha256": "bfa6a4be1319a144f770ba281dfc04091a05320e334357f949b293dc5f9c3d0c"
+    }
+  ]
+}

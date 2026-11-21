@@ -1,0 +1,13 @@
+# Readings for `ossCli exact-probe` and `exact-eval` (development probes, not an accuracy set).
+# Ambiguous everyday readings named in the 0.1.18 report and a few short kana inputs.
+さら
+あし
+はし
+かみ
+せい
+こう
+しょう
+き
+し
+ひ
+か

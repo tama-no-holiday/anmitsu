@@ -1,0 +1,18 @@
+# astra-factory:begin
+.astra/local/
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+# astra-factory:end
+
+.codex-remote-attachments/
+android/.gradle/
+android/.kotlin/
+android/**/build/
+android/local.properties
+artifacts/apk/
+.claude/worktrees/
+.claude/settings.local.json

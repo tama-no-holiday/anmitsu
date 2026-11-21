@@ -1,0 +1,50 @@
+{
+  "format": 1,
+  "note": "Maintainer-pinned Mozc-UT sources for scripts/fetch-ut-dictionaries.py and ossCli ut-prepare. Nothing here is bundled until adopted (docs/dictionary-update.md). A null revision/archiveSha256 means not pinned yet: fetch with an explicit --revision, review, then record both here. The fetched 'notices' (LICENSE, README.md) of these repositories only link to their licences; they are provenance, not full notices. 'bundleNotices' are the full-text files an adoption must ship (path in this repository, SHA-256 of the exact bytes); a missing file or a hash mismatch blocks adoption, and a null sha256 must be computed from the file and recorded at adoption. The script reads neither field.",
+  "sources": [
+    {
+      "name": "sudachidict",
+      "repository": "https://github.com/utuhiro78/mozcdic-ut-sudachidict",
+      "revision": "13129ddebe1cb8eabb63feccbe157adec4e1de01",
+      "archive": "mozcdic-ut-sudachidict.txt.bz2",
+      "archiveSha256": "1b9555338cc36606a5f497a2f57a0f9b948fa02d8c13d18ee9cfb5c99fb9d86e",
+      "rows": 1285149,
+      "license": "Apache-2.0",
+      "pos": "general-noun",
+      "notices": ["LICENSE", "README.md"],
+      "bundleNotices": [
+        {"path": "third_party/sudachidict/LICENSE-2.0.txt", "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30", "covers": "Apache License 2.0 full text"},
+        {"path": "third_party/sudachidict/LEGAL", "sha256": "725a8776b38e058b185e905594bc9a2437dbf3787df022fffeefedb9a84e4665", "covers": "SudachiDict notices (UniDic, NEologd)"}
+      ]
+    },
+    {
+      "name": "neologd",
+      "repository": "https://github.com/utuhiro78/mozcdic-ut-neologd",
+      "revision": "d8307abf02b830b185c9320822cffa0d0787c54e",
+      "archive": "mozcdic-ut-neologd.txt.bz2",
+      "archiveSha256": "231b9b5e4ad16baa3f79680f4e4615f7060511a41da4aac2149789eace3f2411",
+      "rows": 1546041,
+      "license": "Apache-2.0 (with mecab-ipadic-neologd resource notices; keep README.md and LICENSE)",
+      "pos": "general-noun",
+      "notices": ["LICENSE", "README.md"],
+      "bundleNotices": [
+        {"path": "third_party/sudachidict/LICENSE-2.0.txt", "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30", "covers": "Apache License 2.0 full text"},
+        {"path": "third_party/mozc-ut/neologd/COPYING", "sha256": "428ad012b9b7baf3af430fb730998791da30458e4f88fbcd8ef5ac75a0eed81e", "covers": "mecab-ipadic-neologd COPYING at commit abc61e33d8be3d0ead202e6b1df064c72d5ccf11, verbatim"}
+      ]
+    },
+    {
+      "name": "personal-names",
+      "repository": "https://github.com/utuhiro78/mozcdic-ut-personal-names",
+      "revision": "b557dd4c1548cc7c2164d5f8b14170c40cbb6f81",
+      "archive": "mozcdic-ut-personal-names.txt.bz2",
+      "archiveSha256": "610e2e52fad15df0edac854960a05451a7e9a62f3df09c3f065db9e1ab6f51f4",
+      "rows": 87280,
+      "license": "Apache-2.0",
+      "pos": "person-name",
+      "notices": ["LICENSE", "README.md"],
+      "bundleNotices": [
+        {"path": "third_party/sudachidict/LICENSE-2.0.txt", "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30", "covers": "Apache License 2.0 full text"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "writtenBeforeAnyModelRun": true,
+  "salt": "context-holdout-0.1.28:",
+  "rule": "sha256(salt + family)[0] % 3 == 0 -> dev, else holdout",
+  "sha256": {
+    "cases.tsv": "7633801a811587b5d0a88ac0c4ca2eed0b2cf1f04aae88e1f13cf3a451b75204",
+    "dev.tsv": "da8918293c03aabf09f7d79c90bbb3ac310d18dc907d497c1e286c76f3454ff6",
+    "holdout.tsv": "e418d48a1431d813dd14afbbcf5079eed6d54c387955620b75ed2a7638d2f76e",
+    "protocol.md": "6626ab0f53044396b671c02b563a9bb8c64a5e33609d2b09161b0b193053fa3a"
+  },
+  "dev": {
+    "families": 25,
+    "cases": 79,
+    "kinds": {
+      "positive": 48,
+      "neutral": 8,
+      "contradictory": 16,
+      "protected": 7
+    }
+  },
+  "holdout": {
+    "families": 58,
+    "cases": 144,
+    "kinds": {
+      "positive": 84,
+      "neutral": 8,
+      "contradictory": 25,
+      "protected": 27
+    }
+  },
+  "familyOverlap": 0,
+  "oldExampleOverlap": 0
+}
