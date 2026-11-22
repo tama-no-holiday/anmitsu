@@ -14,7 +14,8 @@ with the dictionary alone. No training or fine-tuning was done. Open licence que
   None of its 13 notice files contains the Mozilla Foundation notice of llamafile sgemm or any CC BY-SA text or link.
 - The source now also copies `zenz-MODEL-NOTICE.txt` (model attribution, CC BY-SA 4.0 as currently labelled upstream)
   and `llamafile-LICENSE.txt` (below) into `assets/licenses/`, and `scripts/package-android.ps1 -RequireZenz` requires
-  both. No APK has been built from this corrected source yet; the model, the `.so` and their hashes are unchanged.
+  both. A replacement signed distribution APK has not been prepared yet; the existing signed APK is unchanged, and any
+  local unsigned build made for verification is separate from it. The model, the `.so` and their hashes are unchanged.
 
 **llamafile sgemm.** The 1.0.0 library (`91a88be6…`) exports `llamafile_sgemm` (`llvm-nm -D -C`); the build cache has
 `GGML_LLAMAFILE` on and Ninja compiles `ggml/src/ggml-cpu/llamafile/sgemm.cpp`. That file of llama.cpp tag `v0.7.0`
@@ -50,7 +51,8 @@ A record of what the sources display, not a legal conclusion.
   changed by it. `Apache-2.0.txt` stays as the record of the label at the pinned revision; it is not the model's
   current licence and not treated as a sufficient notice on its own.
 - The existing signed 1.0.0 APK ships only `zenz-LICENSE-Apache-2.0.txt` for the model; it is unchanged. The corrected
-  notice reaches users only with a newly built APK, which does not exist yet.
+  notice reaches users only with a replacement signed distribution APK, which has not been prepared yet (local unsigned
+  verification builds are separate and are not distributed).
 - How ku-nlp/gpt2-small-japanese-char relates to the shipped xsmall model is not established; the tokenizer name and
   the small model's metadata alone are not taken as evidence.
 

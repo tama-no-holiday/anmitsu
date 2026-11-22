@@ -28,7 +28,7 @@
 
 APK に入らないもの: JUnit、Robolectric、AndroidX のテスト部品（開発用）、ビルドツール（JDK、Gradle、Android SDK、NDK、CMake、Ninja）。
 
-**既存の署名済みAPKと、直したソースの違い。** 公式の 1.0.0 APK（SHA-256 `2f4543989165543229f1a1a9a27a70c50af98569b8c8d1fc72dc7b96b3ca612b`）は変えていません。その表記ファイル13件には、llamafile sgemm の Mozilla Foundation の表記も、CC BY-SA の文や URL も入っていません。ソースでは `llamafile-LICENSE.txt` と `zenz-MODEL-NOTICE.txt` を `assets/licenses/` に加え、アプリ内の `THIRD-PARTY.md` を直しました（下の 1・7）。このソースから作った APK はまだありません。モデル・`libastra_zenz.so`・辞書のファイルとハッシュは変えていません。
+**既存の署名済みAPKと、直したソースの違い。** 公式の 1.0.0 APK（SHA-256 `2f4543989165543229f1a1a9a27a70c50af98569b8c8d1fc72dc7b96b3ca612b`）は変えていません。その表記ファイル13件には、llamafile sgemm の Mozilla Foundation の表記も、CC BY-SA の文や URL も入っていません。ソースでは `llamafile-LICENSE.txt` と `zenz-MODEL-NOTICE.txt` を `assets/licenses/` に加え、アプリ内の `THIRD-PARTY.md` を直しました（下の 1・7）。置き換える署名済みの配布用APKはまだ用意していません。既存の署名済みAPKは変えておらず、確認のためにローカルで作る署名していないAPKはそれとは別のものです。直したソースでは表記・パッケージ化・テストが変わりますが、アプリの動作は変わりません。モデル・`libastra_zenz.so`・辞書のファイルとハッシュは変えていません。
 
 ## ソースにあるもの・ないもの
 
@@ -63,7 +63,7 @@ Git のソースに入っていないもの（APKにだけ入る）: 組み立�
 - 上流の表示は、取得した revision（apache-2.0）と現在の main（CC BY-SA 4.0、2026-11-07 のコミット `42cab839…` で変更）で違います。どちらの revision のファイルも同じです（LFS の SHA-256 `00c64b3d318045a708d0cad5434faccab10f5481a49e6362864551fd0995fa58`、20,970,304 バイト）。この記録は、以前の表示による許諾が取り消されたとも、あんみつのアプリのコードが CC BY-SA になるとも主張しません。
 - ソースでは、無変更のモデルに現在の上流の表示 CC BY-SA 4.0 を採り、`third_party/zenz/zenz-MODEL-NOTICE.txt`（作者 Miwa-Keita、モデル名、Hugging Face の出典、取得した revision と現在の表示の revision、SHA-256、無変更での再配布、https://creativecommons.org/licenses/by-sa/4.0/ と https://creativecommons.org/licenses/by-sa/4.0/legalcode）を APK に入れるようにしました。この表記はモデルのライセンスだけを示すもので、このプロジェクトの MIT License がそれを置き換えることはなく、MIT License も変わりません。
 - `zenz-LICENSE-Apache-2.0.txt` は、取得した revision の表示の記録として残します。モデルの現在のライセンスでも、それだけで足りる表記でもありません。
-- 既存の署名済み 1.0.0 APK に入っているモデルの表記は、今も `zenz-LICENSE-Apache-2.0.txt`（Apache-2.0 の全文）だけです。直した表記は、新しく作る APK で初めて利用者に届きます（まだ作っていません）。
+- 既存の署名済み 1.0.0 APK に入っているモデルの表記は、今も `zenz-LICENSE-Apache-2.0.txt`（Apache-2.0 の全文）だけです。直した表記は、置き換える署名済みの配布用APKで初めて利用者に届きます（まだ用意していません。ローカルの署名していない確認用のビルドは別のもので、配布しません）。
 - ku-nlp/gpt2-small-japanese-char と、同梱している xsmall モデルの関係は確かめていません。トークナイザーの名前（`gpt2-small-japanese-char`）や small モデルのメタデータだけからは判断しません。
 
 ## 確認が終わっていない点
@@ -72,10 +72,10 @@ Git のソースに入っていないもの（APKにだけ入る）: 組み立�
 
 | # | 内容 | ソースの公開 | APKの配布 |
 |---|---|---|---|
-| 1 | **アプリ内の表記の古い記述**: 既存の署名済みAPKの `assets/licenses/THIRD-PARTY.md` は、変換部品と辞書について「Experimental OSS converter (debug builds only, off by default)」、変換部品の修正を「one recorded local patch」と書いています。1.0.0 ではどのビルドでも既定で使い、記録した修正は2件です。ソースのファイルはこの2点とモデル・llamafile の表記を直しました。 | 直した（ソース） | 既存のAPKには残る。直したものは、新しく作るAPKから（まだ作っていない） |
+| 1 | **アプリ内の表記の古い記述**: 既存の署名済みAPKの `assets/licenses/THIRD-PARTY.md` は、変換部品と辞書について「Experimental OSS converter (debug builds only, off by default)」、変換部品の修正を「one recorded local patch」と書いています。1.0.0 ではどのビルドでも既定で使い、記録した修正は2件です。ソースのファイルはこの2点とモデル・llamafile の表記を直しました。 | 直した（ソース） | 既存のAPKには残る。直したものは、置き換える署名済みの配布用APKから（まだ用意していない） |
 | 2 | **zenz モデルの学習データ**: モデルカードに学習データの説明がありません。small の GGUF のメタデータは ku-nlp の gpt2-small-japanese-char を基のモデルとしていますが、同梱している xsmall との関係は確かめていません（ku-nlp のモデルカードの現在の表示は CC BY-SA 4.0）。基のモデルと学習データの条件は確かめていません。Hub のライセンス表示は、学習データの来歴を示すものではありません。 | ほぼ関係しない（モデルはソースに入っていない。入っているのは読み込むコードと記録だけ） | 関係する（モデルを同梱して配布する） |
 | 3 | **llama.cpp の同梱部品**: `libastra_zenz.so` に入る llama.cpp / ggml の部品のうち、llamafile sgemm（Mozilla Foundation の表記が必要。既存の署名済みAPKにはなく、ソースで `llamafile-LICENSE.txt` を加えた）が見つかりました。nlohmann/json と llamafile sgemm 以外に別の表記が必要なものがないかは、一つずつは確かめていません。ネイティブの依存関係の監査は終わっていません。 | 関係しない（llama.cpp のソースも `.so` もソースに入っていない） | 関係する（`.so` を同梱して配布する） |
 | 4 | **Mozc-UT の元データ**: 各UT辞書（sudachidict・neologd・personal-names）が何から作られたかは、neologd の COPYING 以外、リポジトリに記録していません。 | 関係する（ソースの `english-words.tsv` は Mozc-UT の表記も使っている） | 関係する（組み立てた辞書を同梱して配布する） |
 | 5 | **依存関係のライセンスの全体の監査**: 公式APK（versionCode 1）のハッシュ・パッケージ名・版・署名者を確かめ、APKの `assets/licenses/` にある表記ファイル13件を一覧にしました（その時点の表の12ファイルと `THIRD-PARTY.md`。直したソースでは `llamafile-LICENSE.txt` と `zenz-MODEL-NOTICE.txt` が加わります）。これは表記ファイルの列挙で、APKにコンパイルされたすべての依存関係を一つずつ監査したものではありません（`scripts/package-android.ps1` が確かめるのも、主な表記ファイルがそろっていることだけです）。 | 一部（Gradle の依存はソースに入っていないが、`third_party/` の写しは全体を照合していない） | 関係する |
 | 6 | **Mozc 辞書データの各表記**: IPAdic・NAIST・ICOT・沖縄などの表記はそのまま同梱していますが、各条件を満たしているかを一つずつは確かめていません。 | 一部（`mozc-supplement.tsv` は BSD-3-Clause の部分だけを使う記録） | 関係する |
-| 7 | **zenz モデルの配布時の表記**: 取得した revision の表示は apache-2.0、現在の上流の表示は CC BY-SA 4.0 です（上の「zenz モデルのライセンス表示の記録」）。ソースでは、無変更のモデルに CC BY-SA 4.0 を採り、`zenz-MODEL-NOTICE.txt` を加えました。既存の署名済みAPKには、モデルの表記として Apache-2.0 の全文だけが入っています。モデルの学習データ・基のモデルの条件（2）は、この表記では解決していません。 | ほぼ関係しない（モデルはソースに入っていない） | 既存のAPKには残る。直したものは、新しく作るAPKから（まだ作っていない） |
+| 7 | **zenz モデルの配布時の表記**: 取得した revision の表示は apache-2.0、現在の上流の表示は CC BY-SA 4.0 です（上の「zenz モデルのライセンス表示の記録」）。ソースでは、無変更のモデルに CC BY-SA 4.0 を採り、`zenz-MODEL-NOTICE.txt` を加えました。既存の署名済みAPKには、モデルの表記として Apache-2.0 の全文だけが入っています。モデルの学習データ・基のモデルの条件（2）は、この表記では解決していません。 | ほぼ関係しない（モデルはソースに入っていない） | 既存のAPKには残る。直したものは、置き換える署名済みの配布用APKから（まだ用意していない） |
