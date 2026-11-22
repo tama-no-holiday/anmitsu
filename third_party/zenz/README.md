@@ -10,29 +10,48 @@ listed in [THIRD-PARTY.md](../../THIRD-PARTY.md); how to obtain and build the fi
 section 4.
 
 **Licences.** anmitsu's own scorer and JNI code (`android/zenz-native`) is under the project's MIT licence
-([LICENSE](../../LICENSE)). The zenz model keeps its own licence (Apache-2.0 per the Hub tag) and llama.cpp/ggml keeps
+([LICENSE](../../LICENSE)). The zenz model keeps its own licence terms (labelling below) and llama.cpp/ggml keeps
 MIT with its bundled notices; the project licence does not replace either. The open points (model training data,
-notices for every llama.cpp component in the `.so`) concern the APK, which bundles both files, not the Git source,
-which contains neither.
+reconciling the model's distribution notice, notices for every llama.cpp component in the `.so`) concern the APK,
+which bundles both files, not the Git source, which contains neither.
+
+## Model licence labelling (checked 2026-11-23)
+
+A record of what the sources display, not a legal conclusion.
+
+| Source | Label |
+|---|---|
+| README of huggingface.co/Miwa-Keita/zenz-v3.2-xsmall-gguf at the pinned revision `4f5423f0fad41a73b1242eb96fe5c12ae4fdca83` (the shipped file) | `license: apache-2.0` |
+| Same repository, current `main` per the Hub API: revision `42cab8392a3727d1cf80932cf2275b7d523fbb9f` | `cc-by-sa-4.0` |
+| Official page https://huggingface.co/Miwa-Keita/zenz-v3.2-xsmall-gguf | CC BY-SA 4.0 |
+| Official model card https://huggingface.co/ku-nlp/gpt2-small-japanese-char | CC BY-SA 4.0 |
+
+- The upstream label changed between the pinned revision and current `main`. This record does not claim that the
+  earlier grant was revoked, nor that anmitsu's application code must be CC BY-SA.
+- The 1.0.0 APK ships only `zenz-LICENSE-Apache-2.0.txt` for the model. Reconciling the distribution notice with the
+  current upstream label is outstanding; the APK and its assets are unchanged.
+- How ku-nlp/gpt2-small-japanese-char relates to the shipped xsmall model is not established; the tokenizer name and
+  the small model's metadata alone are not taken as evidence.
 
 ## Evaluation download (historical, 2026-10-27)
 
 The files below were downloaded with the owner's approval into an ignored local directory for evaluation. Of the two
 models, only xsmall is bundled; the small model was evaluated and is not shipped. The build tools are not shipped.
 
-| Item | Source (pinned) | SHA-256 | License |
+| Item | Source (pinned) | SHA-256 | License (as labelled on 2026-10-27) |
 |---|---|---|---|
-| zenz-v3.2-xsmall Q5_K_M GGUF (20,970,304 B) | huggingface.co/Miwa-Keita/zenz-v3.2-xsmall-gguf @ `4f5423f0fad41a73b1242eb96fe5c12ae4fdca83` | `00c64b3d318045a708d0cad5434faccab10f5481a49e6362864551fd0995fa58` (matches the Hub LFS oid) | Apache-2.0 (Hub tag; README is near empty) |
-| zenz-v3.2-small Q5_K_M GGUF (73,871,936 B) | huggingface.co/Miwa-Keita/zenz-v3.2-small-gguf @ `c67e03e07d215c869f591b274c1631170d3e11fe` | `29c223d4c23327b80fd13ebb5ab2555057a46317997d5da391584ffbef0db673` (matches) | Apache-2.0 (Hub tag) |
+| zenz-v3.2-xsmall Q5_K_M GGUF (20,970,304 B) | huggingface.co/Miwa-Keita/zenz-v3.2-xsmall-gguf @ `4f5423f0fad41a73b1242eb96fe5c12ae4fdca83` | `00c64b3d318045a708d0cad5434faccab10f5481a49e6362864551fd0995fa58` (matches the Hub LFS oid) | Apache-2.0 (Hub tag at the pinned revision; README is near empty). Current upstream: CC BY-SA 4.0, see above |
+| zenz-v3.2-small Q5_K_M GGUF (73,871,936 B) | huggingface.co/Miwa-Keita/zenz-v3.2-small-gguf @ `c67e03e07d215c869f591b274c1631170d3e11fe` | `29c223d4c23327b80fd13ebb5ab2555057a46317997d5da391584ffbef0db673` (matches) | Apache-2.0 (Hub tag; current label not rechecked) |
 | llama.cpp source v0.7.0 (zip) | github.com/ggml-org/llama.cpp tag `v0.7.0` | `48ec218be461975cd4d39f2155675851e6f3ad7835f2522412ec2b610f71c20c` (recorded; GitHub publishes no digest for source archives) | MIT |
 | Android NDK r30 (Windows) | dl.google.com/android/repository/android-ndk-r30-windows.zip | `b830098aaf18b67a42eb831c404e15e5f2990a474f054ac145b0bc957ac6d729`; SHA-1 `9bf167a1…9408` matches developer.android.com | Android SDK license |
 | CMake 4.4.4 (Windows zip) | github.com/Kitware/CMake release v4.4.4 | `bace36e9…dac536` (matches release digest) | BSD-3-Clause |
 | Ninja 1.13.2 (Windows zip) | github.com/ninja-build/ninja release v1.13.2 | `07fc8261…dc65` (matches) | Apache-2.0 |
 | w64devkit 2.10.1 (host gcc, extracted with tar, never executed as an installer) | github.com/skeeto/w64devkit release v2.10.1 | `add1edf9…896a` (matches) | Unlicense / component licenses |
 
-The zenz model card does not describe the training data. The model metadata names ku-nlp gpt2-small-japanese-char as
-the base (general.organization "Ku Nlp" in the small GGUF). The provenance check that `docs/model-comparison.md` asks for
-(the Apache tag alone does not establish the training data's provenance) has not been completed; see
+The zenz model card does not describe the training data. The small GGUF's metadata names ku-nlp
+gpt2-small-japanese-char as the base (general.organization "Ku Nlp"); whether that applies to the shipped xsmall is not
+established. The provenance check that `docs/model-comparison.md` asks for (a Hub licence label alone does not
+establish the training data's provenance) has not been completed; see
 [THIRD-PARTY.md](../../THIRD-PARTY.md).
 
 ## Integration notes
