@@ -1,6 +1,6 @@
 # ビルド手順（anmitsu 1.0.0）
 
-ここに書く手順は、開発に使ってきたスクリプトに合わせています。この書き出したソースの複製で、既存のツール・キャッシュ・辞書・AIのファイルを使い、テスト（3と同じタスク）、`assembleRelease`・`lintRelease`、`package-android.ps1` を実行しました。ビルドとパッケージ化は完了し、テストは2件が失敗して未解決です（[docs/releases/v1.0.0-validation.md](docs/releases/v1.0.0-validation.md)）。ツールの準備（2）とネイティブライブラリのビルド（4）は通していません。
+ここに書く手順は、開発に使ってきたスクリプトに合わせています。この書き出したソースの複製で、既存のツール・キャッシュ・辞書・AIのファイルを使い、テスト（3と同じタスク）、`assembleRelease`・`lintRelease`、`package-android.ps1` を実行しました。ビルドとパッケージ化は完了し、テストは2件が失敗して未解決です。その後、辞書・AIなしの fixture 限定の構成（[docs/ci-baseline.md](docs/ci-baseline.md)）では全タスクが成功しましたが、2件の失敗が解決したとは扱いません（[docs/releases/v1.0.0-validation.md](docs/releases/v1.0.0-validation.md)）。ツールの準備（2）とネイティブライブラリのビルド（4）は通していません。
 
 ## 1. 前提
 
@@ -105,8 +105,11 @@ apksigner verify --verbose --print-certs <apk>
 
 `SOURCE-MANIFEST.txt` に、元のコミット、各ファイルのSHA-256とGitのblob IDがあります。`commit` の行は元のコミットにあるファイルそのもので、`overlay` の行は公開用に書いた文書です（このファイルなどの新しい文書と、元のコミットの文書5件を公開向けに直したもの: `docs/privacy-and-learning.md`、`docs/dictionary-update.md`、`docs/oss-converter-integration.md`、`docs/ux-0.1.18.md`、`third_party/zenz/README.md`）。直したのは文書だけで、コード・ライセンス文・ロック・アプリに入るファイルは元のコミットのままです。
 
+`SOURCE-MANIFEST.txt` は**最初の書き出しのときの記録**で、その後の変更は反映していません。後から加えた・直したファイル（CIベースラインのスクリプトと `.github/`・`docs/ci-baseline.md`、`LICENSE`、README などの文書）は、記録にないか、記録とハッシュが違います。アプリのコード・版・同梱するファイルは、後から変えていません。
+
 ## 9. 履歴としての記録と、公開していない参照先
 
 - `reports/` の6件、`data/README.md` と `data/context-holdout/` の文書、`docs/model-comparison.md`、`docs/ux-0.1.18.md` は、開発の途中で書いた当時の記録です。1.0.0 の動作の説明ではありません（1.0.0 については [README.md](README.md)、[PRIVACY.md](PRIVACY.md)）。
 - これらの記録やソースのコメントは、公開していないファイルを名前で挙げていることがあります。開発の作業記録（`docs/next-work.md` など）、試験版の手順書（`docs/android-trial.md` など）、ほかの版の記録（`docs/ux-*.md`）、評価の出力（`reports/` の `.json`・`.txt`・`.tsv` など）です。これらはこのソースに含まれず、入手できません。ビルドと確認に必要なことは、この文書と [THIRD-PARTY.md](THIRD-PARTY.md) に書いています。
+- `ime_poc/` と `tests/` は、Android版より前の検証に使ったPC用の試作（Python 3.12以降）です。アプリには含まれません（`python -m unittest discover -s tests -v`、`python -m ime_poc demo`）。
 - 公式APKのソースを保つため、コードのコメントと元の記録の中の参照はそのままにしています。

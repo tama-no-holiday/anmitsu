@@ -9,6 +9,12 @@ with the dictionary alone. No training or fine-tuning was done. Notices shipped 
 listed in [THIRD-PARTY.md](../../THIRD-PARTY.md); how to obtain and build the files is in [BUILDING.md](../../BUILDING.md)
 section 4.
 
+**Licences.** anmitsu's own scorer and JNI code (`android/zenz-native`) is under the project's MIT licence
+([LICENSE](../../LICENSE)). The zenz model keeps its own licence (Apache-2.0 per the Hub tag) and llama.cpp/ggml keeps
+MIT with its bundled notices; the project licence does not replace either. The open points (model training data,
+notices for every llama.cpp component in the `.so`) concern the APK, which bundles both files, not the Git source,
+which contains neither.
+
 ## Evaluation download (historical, 2026-10-27)
 
 The files below were downloaded with the owner's approval into an ignored local directory for evaluation. Of the two
