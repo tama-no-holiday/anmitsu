@@ -14,11 +14,11 @@ JetBrains and the respective authors and contributors.
 
 The fallback conversion lexicon is handwritten project data, exported from data/lexicon.json.
 
-Experimental OSS converter (debug builds only, off by default):
+OSS converter and dictionary (used by default in every build since 1.0.0; the dictionary when bundled):
 
 - Conversion code: kotlin-kana-kanji-converter by KAZUMA NAKA, MIT License,
   https://github.com/KazumaProject/kotlin-kana-kanji-converter revision
-  13e391bc7a4a245f63aa0091c1e9c11db3dbd759, with one recorded local patch
+  13e391bc7a4a245f63aa0091c1e9c11db3dbd759, with two recorded local patches to TokenArray.kt
   (kotlin-kana-kanji-converter-PATCHES.md). License: kotlin-kana-kanji-converter-LICENSE.txt.
 - Dictionary data (assets/oss, when bundled): compiled without vocabulary, cost or ID changes from
   google/mozc src/data/dictionary_oss at revision d766d25d253141eff71e25c593aaf753f8d91cee.
@@ -48,12 +48,19 @@ lower-cased key and the cheapest source cost are added. The file's header record
 
 zenz judge (when bundled; used only on arm64 CPUs with dotprod and fp16):
 
-- Model: zenz-v3.2-xsmall Q5_K_M GGUF by Miwa-Keita, Apache License 2.0
-  (https://huggingface.co/Miwa-Keita/zenz-v3.2-xsmall-gguf revision 4f5423f0fad41a73b1242eb96fe5c12ae4fdca83,
-  unmodified). License text: zenz-LICENSE-Apache-2.0.txt. Runs on the device only; no training was done.
+- Model: zenz-v3.2-xsmall Q5_K_M GGUF by Miwa-Keita, redistributed unmodified
+  (https://huggingface.co/Miwa-Keita/zenz-v3.2-xsmall-gguf, pinned revision 4f5423f0fad41a73b1242eb96fe5c12ae4fdca83;
+  the same file, SHA-256 00c64b3d318045a708d0cad5434faccab10f5481a49e6362864551fd0995fa58, at revision
+  42cab8392a3727d1cf80932cf2275b7d523fbb9f, which carries the current label). License: CC BY-SA 4.0 as currently
+  labelled upstream, https://creativecommons.org/licenses/by-sa/4.0/; attribution and details: zenz-MODEL-NOTICE.txt.
+  This app's MIT License does not apply to the model. zenz-LICENSE-Apache-2.0.txt is kept as the record of the
+  apache-2.0 label at the pinned revision, not as the model's current license. Runs on the device only; no training
+  was done. The model's training data is not described upstream and was not established.
 - Runtime: llama.cpp / ggml v0.7.0 (MIT, llama.cpp-LICENSE.txt), compiled unmodified into
   assets/zenz/arm64-v8a/libastra_zenz.so with the project's scorer; vendored nlohmann/json notice:
-  llama.cpp-LICENSE-jsonhpp.txt.
+  llama.cpp-LICENSE-jsonhpp.txt. llamafile sgemm (ggml/src/ggml-cpu/llamafile/sgemm.cpp at tag v0.7.0, compiled in):
+  Copyright 2024 Mozilla Foundation, MIT, llamafile-LICENSE.txt. Other components in the library have not all been
+  checked for separate notices.
 
 App icon (0.1.27+): the あ is a glyph outline from Noto Sans CJK JP Bold (SIL Open Font License 1.1,
 https://github.com/notofonts/noto-cjk), drawn as a vector path; no font file is included.

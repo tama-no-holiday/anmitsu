@@ -25,6 +25,7 @@ import android.view.inputmethod.ExtractedText
 import android.view.inputmethod.ExtractedTextRequest
 import android.view.inputmethod.InputConnection
 import android.widget.TextView
+import dev.astra.ime.core.Candidate
 import dev.astra.ime.core.FlickDirection
 import dev.astra.ime.core.FlickKey
 import dev.astra.ime.core.FlickLayout
@@ -360,6 +361,19 @@ class InputUiTest {
             if (done()) return
             Thread.sleep(10)
         }
+    }
+
+    /**
+     * [pumpUntil] that fails when [done] never holds, instead of returning and letting the next assertion see whatever
+     * the screen showed at that moment (kana awaiting its result, or the result). Bounded: about 10 s.
+     */
+    private fun awaitOrFail(what: String, done: () -> Boolean) {
+        repeat(1000) {
+            shadowOf(Looper.getMainLooper()).idle()
+            if (done()) return
+            Thread.sleep(10)
+        }
+        throw AssertionError("timed out waiting for $what")
     }
 
     private var liveStrip: ViewGroup? = null
@@ -831,6 +845,21 @@ class InputUiTest {
 
     private fun selecting(): Boolean = segmentChips().any { it.isSelected }
 
+    /**
+     * Waits (failing on timeout) until the selected segment reads [typed] and the converter's result for exactly that
+     * reading was applied: a list with a kanji surface, so neither the kana shown while the request runs nor the
+     * identity list of a converter that is not ready. A reading edit clears the list, and a result asked before it is
+     * rejected, so the list is for [typed]. Returns it.
+     */
+    private fun awaitSegmentResult(typed: String): List<Candidate> {
+        val han = { s: String -> s.any { Character.UnicodeScript.of(it.code) == Character.UnicodeScript.HAN } }
+        awaitOrFail("the converted candidates of $typed") {
+            val r = ime.repairForTests
+            r != null && r.units[r.focus].typed == typed && r.scopeTyped == typed && r.candidates.any { han(it.surface) }
+        }
+        return ime.repairForTests!!.candidates
+    }
+
     private fun stripChip(label: String): TextView =
         stripViews().first { it.tag != TAG_SEGMENT && it.text.toString() == label }
 
@@ -1004,16 +1033,22 @@ class InputUiTest {
         val e = startWithView()
         typeTomorrowCommaRain(e)
         selectSegment(0)
-        pumpUntil { chips().isNotEmpty() }
-        ime.onAction(Keyboards.BACKSPACE)
-        pumpUntil { e.text.toString() == "明日、雨" }
-        assertEquals(listOf("明日|", "、", "雨"), unitLabels())
-        ime.onAction(Keyboards.BACKSPACE) // あし: no word, shown as kana
-        pumpUntil { e.text.toString() == "あし、雨" && chips().isNotEmpty() }
-        assertEquals(listOf("あし|", "、", "雨"), unitLabels())
+        awaitSegmentResult("あしたは")
+        ime.onAction(Keyboards.BACKSPACE) // は, the last kana of あしたは
+        // Each deleted reading previews its top candidate, as live conversion does; the raw kana stays choosable.
+        val ashita = awaitSegmentResult("あした")
+        assertTrue("あした" in chips())
+        assertEquals(ashita[0].surface + "、雨", e.text.toString())
+        assertEquals(listOf(ashita[0].surface + "|", "、", "雨"), unitLabels())
+        ime.onAction(Keyboards.BACKSPACE) // た: あし, which the fixture corrects to its top candidate (朝, read あさ)
+        val ashi = awaitSegmentResult("あし")
+        assertTrue("あし" in chips())
+        assertEquals(ashi[0].surface + "、雨", e.text.toString())
+        assertEquals(listOf(ashi[0].surface + "|", "、", "雨"), unitLabels())
+        assertEquals(0, e.composingStart)
+        assertTrue(e.keys.isEmpty())
         repeat(2) { ime.onAction(Keyboards.BACKSPACE) } // the segment is gone; the next one is selected, caret at its start
-        pumpUntil { e.text.toString() == "、雨" }
-        assertEquals(listOf("、|", "雨"), unitLabels())
+        awaitOrFail("、雨 with 、 selected") { e.text.toString() == "、雨" && unitLabels() == listOf("、|", "雨") }
         ime.onAction(Keyboards.BACKSPACE) // nothing before the caret in the composition: nothing changes
         shadowOf(Looper.getMainLooper()).idle()
         assertEquals("、雨", e.text.toString())
@@ -1099,8 +1134,14 @@ class InputUiTest {
         tap(f, 1)
         assertTrue(selecting())
         ime.onAction(Keyboards.BACKSPACE)
-        pumpUntil { f.text.toString() == "あしは雨" }
-        assertEquals(listOf("あしは|", "雨"), unitLabels())
+        // The reading left is あしは, not あした (は deleted): both preview 明日, so the reading and its raw kana tell.
+        val ashiha = awaitSegmentResult("あしは")
+        assertTrue("あしは" in chips())
+        assertFalse("あした" in chips())
+        assertEquals(ashiha[0].surface + "雨", f.text.toString()) // the top candidate, previewed as live conversion does
+        assertEquals(listOf(ashiha[0].surface + "|", "雨"), unitLabels())
+        assertEquals(0, f.composingStart)
+        assertTrue(f.keys.isEmpty())
     }
 
     // --- Typing in the selected segment (0.1.32) ---------------------------------------------------

@@ -1,0 +1,27 @@
+zenz-v3.2-xsmall Q5_K_M GGUF: model licence and attribution
+
+Model:     zenz-v3.2-xsmall, Q5_K_M GGUF (assets/zenz/zenz-v3.2-xsmall-Q5_K_M.gguf)
+Author:    Miwa-Keita
+Source:    https://huggingface.co/Miwa-Keita/zenz-v3.2-xsmall-gguf
+Revisions: 4f5423f0fad41a73b1242eb96fe5c12ae4fdca83 (pinned; the file as obtained)
+           42cab8392a3727d1cf80932cf2275b7d523fbb9f (current licence label, changed upstream on 2026-11-07)
+           Both revisions hold the same file: Hugging Face LFS SHA-256 below, 20,970,304 bytes.
+SHA-256:   00c64b3d318045a708d0cad5434faccab10f5481a49e6362864551fd0995fa58
+
+Licence:   Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0),
+           as the model is currently labelled upstream.
+           Deed:       https://creativecommons.org/licenses/by-sa/4.0/
+           Legal code: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+Changes:   None. The model is redistributed unmodified (the SHA-256 above); this project did no training,
+           fine-tuning, quantization or format conversion. The app only runs it on the device.
+
+Scope:     This notice states the licence of the model file only. anmitsu's own code is under the project's
+           MIT License, which does not cover the model and does not replace the model's licence.
+
+History:   At the pinned revision the upstream label was apache-2.0; zenz-LICENSE-Apache-2.0.txt is kept as a
+           record of that label. It is not the model's current licence label and is not presented as a sufficient
+           notice on its own. This notice does not claim that the earlier grant was revoked.
+
+Not established: the model's training data and its relation to any base model (the model card does not describe
+           them). This notice makes no statement about them.

@@ -4,16 +4,30 @@
 `android/app/zenz-assets.lock`: the zenz-v3.2-xsmall Q5_K_M GGUF, unmodified, and `arm64-v8a/libastra_zenz.so`, built
 from `android/zenz-native` and the unmodified llama.cpp v0.7.0 source (recipe below). Neither file is in the Git source.
 The app loads them only after its CPU check (`android/app/src/main/java/dev/astra/ime/ZenzCpu.kt`); otherwise it converts
-with the dictionary alone. No training or fine-tuning was done. Notices shipped in the APK: `zenz-LICENSE-Apache-2.0.txt`
-(from `Apache-2.0.txt` here), `llama.cpp-LICENSE.txt` and `llama.cpp-LICENSE-jsonhpp.txt`. Open licence questions are
-listed in [THIRD-PARTY.md](../../THIRD-PARTY.md); how to obtain and build the files is in [BUILDING.md](../../BUILDING.md)
-section 4.
+with the dictionary alone. No training or fine-tuning was done. Open licence questions are listed in
+[THIRD-PARTY.md](../../THIRD-PARTY.md); how to obtain and build the files is in [BUILDING.md](../../BUILDING.md) section 4.
+
+**Notices: the existing signed APK and the corrected source are not the same.**
+
+- The existing signed 1.0.0 APK (SHA-256 `2f454398…`, unchanged) ships, for these files, only
+  `zenz-LICENSE-Apache-2.0.txt` (from `Apache-2.0.txt` here), `llama.cpp-LICENSE.txt` and `llama.cpp-LICENSE-jsonhpp.txt`.
+  None of its 13 notice files contains the Mozilla Foundation notice of llamafile sgemm or any CC BY-SA text or link.
+- The source now also copies `zenz-MODEL-NOTICE.txt` (model attribution, CC BY-SA 4.0 as currently labelled upstream)
+  and `llamafile-LICENSE.txt` (below) into `assets/licenses/`, and `scripts/package-android.ps1 -RequireZenz` requires
+  both. No APK has been built from this corrected source yet; the model, the `.so` and their hashes are unchanged.
+
+**llamafile sgemm.** The 1.0.0 library (`91a88be6…`) exports `llamafile_sgemm` (`llvm-nm -D -C`); the build cache has
+`GGML_LLAMAFILE` on and Ninja compiles `ggml/src/ggml-cpu/llamafile/sgemm.cpp`. That file of llama.cpp tag `v0.7.0`
+(https://raw.githubusercontent.com/ggml-org/llama.cpp/v0.7.0/ggml/src/ggml-cpu/llamafile/sgemm.cpp) begins with
+"Copyright 2024 Mozilla Foundation" and the MIT permission notice and disclaimer; `llamafile-LICENSE.txt` carries that
+copyright line with the standard MIT text. Whether other components compiled into the `.so` need notices of their own
+has still not been checked one by one.
 
 **Licences.** anmitsu's own scorer and JNI code (`android/zenz-native`) is under the project's MIT licence
 ([LICENSE](../../LICENSE)). The zenz model keeps its own licence terms (labelling below) and llama.cpp/ggml keeps
 MIT with its bundled notices; the project licence does not replace either. The open points (model training data,
-reconciling the model's distribution notice, notices for every llama.cpp component in the `.so`) concern the APK,
-which bundles both files, not the Git source, which contains neither.
+notices for every llama.cpp component in the `.so`) concern the APK, which bundles both files, not the Git source,
+which contains neither.
 
 ## Model licence labelling (checked 2026-11-23)
 
@@ -26,10 +40,17 @@ A record of what the sources display, not a legal conclusion.
 | Official page https://huggingface.co/Miwa-Keita/zenz-v3.2-xsmall-gguf | CC BY-SA 4.0 |
 | Official model card https://huggingface.co/ku-nlp/gpt2-small-japanese-char | CC BY-SA 4.0 |
 
-- The upstream label changed between the pinned revision and current `main`. This record does not claim that the
-  earlier grant was revoked, nor that anmitsu's application code must be CC BY-SA.
-- The 1.0.0 APK ships only `zenz-LICENSE-Apache-2.0.txt` for the model. Reconciling the distribution notice with the
-  current upstream label is outstanding; the APK and its assets are unchanged.
+- The upstream label changed between the pinned revision and current `main` (commit `42cab839…`, 2026-11-07). Both
+  revisions hold the same file: LFS SHA-256 `00c64b3d318045a708d0cad5434faccab10f5481a49e6362864551fd0995fa58`,
+  20,970,304 bytes. This record does not claim that the earlier grant was revoked, nor that anmitsu's application code
+  must be CC BY-SA.
+- Decision for the source: the unmodified model is labelled with the current upstream licence, CC BY-SA 4.0, in
+  `zenz-MODEL-NOTICE.txt` (author, model, source, both revisions, SHA-256, unmodified redistribution, deed and legal
+  code URLs). That notice states the model's licence only; the project's MIT licence does not replace it and is not
+  changed by it. `Apache-2.0.txt` stays as the record of the label at the pinned revision; it is not the model's
+  current licence and not treated as a sufficient notice on its own.
+- The existing signed 1.0.0 APK ships only `zenz-LICENSE-Apache-2.0.txt` for the model; it is unchanged. The corrected
+  notice reaches users only with a newly built APK, which does not exist yet.
 - How ku-nlp/gpt2-small-japanese-char relates to the shipped xsmall model is not established; the tokenizer name and
   the small model's metadata alone are not taken as evidence.
 
