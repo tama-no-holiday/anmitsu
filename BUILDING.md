@@ -103,9 +103,9 @@ apksigner verify --verbose --print-certs <apk>
 
 ## 8. 書き出したソースの対応関係
 
-`SOURCE-MANIFEST.txt` に、元のコミット、各ファイルのSHA-256とGitのblob IDがあります。`commit` の行は元のコミットにあるファイルそのもので、`overlay` の行は公開用に書いた文書です（このファイルなどの新しい文書と、元のコミットの文書5件を公開向けに直したもの: `docs/privacy-and-learning.md`、`docs/dictionary-update.md`、`docs/oss-converter-integration.md`、`docs/ux-0.1.18.md`、`third_party/zenz/README.md`）。直したのは文書だけで、コード・ライセンス文・ロック・アプリに入るファイルは元のコミットのままです。
+`SOURCE-MANIFEST.txt` に、元のコミット、各ファイルのSHA-256とGitのblob IDがあります。`commit` の行は元のコミットにあるファイルそのもので、`overlay` の行は公開用に書いた文書です（このファイルなどの新しい文書と、元のコミットの文書5件を公開向けに直したもの: `docs/privacy-and-learning.md`、`docs/dictionary-update.md`、`docs/oss-converter-integration.md`、`docs/ux-0.1.18.md`、`third_party/zenz/README.md`）。書き出しの時点で直したのは文書だけで、コード・ライセンス文・ロック・アプリに入るファイルは元のコミットのままです。
 
-`SOURCE-MANIFEST.txt` は**最初の書き出しのときの記録**で、その後の変更は反映していません。後から加えた・直したファイル（CIベースラインのスクリプトと `.github/`・`docs/ci-baseline.md`、`LICENSE`、README などの文書）は、記録にないか、記録とハッシュが違います。アプリのコード・版・同梱するファイルは、後から変えていません。
+`SOURCE-MANIFEST.txt` は**最初の書き出しのときの記録**で、その後の変更は反映していません。後から加えた・直したファイル（CIベースラインのスクリプトと `.github/`・`docs/ci-baseline.md`、`LICENSE`、README などの文書）は、記録にないか、記録とハッシュが違います。そのほか、ライセンス表記（`assets/licenses/` への `llamafile-LICENSE.txt`・`zenz-MODEL-NOTICE.txt` の追加と、アプリ内の `THIRD-PARTY.md` の修正）、パッケージ化のスクリプト、UIテスト2件も後から直しました（[docs/releases/v1.0.0-validation.md](docs/releases/v1.0.0-validation.md) の E）。このため、APKに入る表記ファイルも記録とは違います。アプリの実行時のコード・版と、モデル・辞書・ネイティブライブラリのファイルは変えていません。`SOURCE-MANIFEST.txt` は作り直していません。
 
 ## 9. 履歴としての記録と、公開していない参照先
 
