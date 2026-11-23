@@ -59,8 +59,11 @@ zenz judge (when bundled; used only on arm64 CPUs with dotprod and fp16):
 - Runtime: llama.cpp / ggml v0.7.0 (MIT, llama.cpp-LICENSE.txt), compiled unmodified into
   assets/zenz/arm64-v8a/libastra_zenz.so with the project's scorer; vendored nlohmann/json notice:
   llama.cpp-LICENSE-jsonhpp.txt. llamafile sgemm (ggml/src/ggml-cpu/llamafile/sgemm.cpp at tag v0.7.0, compiled in):
-  Copyright 2024 Mozilla Foundation, MIT, llamafile-LICENSE.txt. Other components in the library have not all been
-  checked for separate notices.
+  Copyright 2024 Mozilla Foundation, MIT, llamafile-LICENSE.txt. YaRN: ggml/src/ggml-cpu/ops.cpp (compiled in) credits
+  the YaRN algorithm to https://github.com/jquesnelle/yarn, MIT, Copyright (c) 2023 Jeffrey Quesnelle and Bowen Peng,
+  yarn-LICENSE.txt. Unicode data: src/unicode-data.cpp holds tables generated from Unicode Character Database files
+  (unicode.org) and Python unicodedata; Unicode License V3, Unicode-LICENSE.txt, included as conservative attribution.
+  Other components in the library have not all been checked for separate notices.
 
 App icon (0.1.27+): the あ is a glyph outline from Noto Sans CJK JP Bold (SIL Open Font License 1.1,
 https://github.com/notofonts/noto-cjk), drawn as a vector path; no font file is included.

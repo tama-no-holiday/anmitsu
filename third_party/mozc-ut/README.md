@@ -21,3 +21,14 @@ entries and costs are unchanged; only the added rows get the policy cost below.
 - Notices shipped in the APK (`assets/licenses/`): `SudachiDict-LICENSE-2.0.txt` (Apache 2.0 full text, also covers
   the UT repositories), `SudachiDict-LEGAL.txt`, and `mecab-ipadic-neologd-COPYING.txt` = `neologd/COPYING` (verbatim,
   SHA-256 `428ad012b9b7baf3af430fb730998791da30458e4f88fbcd8ef5ac75a0eed81e`).
+- UT LICENSE files (fetched at the pinned revisions, 2026-11-23): sudachidict's contains only a Markdown link
+  "Apache License Version 2.0" to WorksApplications/SudachiDict/blob/develop/LEGAL; neologd's contains only a link
+  to neologd/mecab-ipadic-neologd/blob/master/COPYING; personal-names' contains only the string "Apache License
+  Version 2.0". None has further author or copyright lines, so their hashes differing from the Apache 2.0 full text
+  is not evidence of a missing notice: the texts they point to (SudachiDict LEGAL, Apache 2.0 full text, NEologd
+  COPYING) are already shipped, and no duplicate copies are added. The pinned READMEs state that UT sudachidict
+  derives from SudachiDict and UT neologd from mecab-ipadic-NEologd. The deeper original source of personal-names is
+  not disclosed upstream; that is unknown provenance, not a proven missing redistribution notice, and contacting the
+  maintainer is not treated as a prerequisite without a concrete obligation. This is not a blanket legal clearance.
+  The app's THIRD-PARTY.md already describes the selected Sudachi rows, the UT POS/cost-floor changes and the
+  English-derived list.

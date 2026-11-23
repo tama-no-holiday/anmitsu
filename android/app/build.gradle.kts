@@ -99,6 +99,8 @@ val renameLicenses by tasks.registering(Copy::class) {
     from(rootProject.file("../third_party/zenz/llama.cpp-LICENSE.txt"))
     from(rootProject.file("../third_party/zenz/llama.cpp-LICENSE-jsonhpp.txt"))
     from(rootProject.file("../third_party/zenz/llamafile-LICENSE.txt"))
+    from(rootProject.file("../third_party/zenz/yarn-LICENSE.txt"))
+    from(rootProject.file("../third_party/zenz/Unicode-LICENSE.txt"))
     from(rootProject.file("../third_party/zenz/zenz-MODEL-NOTICE.txt"))
     from(rootProject.file("../third_party/zenz/Apache-2.0.txt")) { rename { "zenz-LICENSE-Apache-2.0.txt" } }
     from(rootProject.file("../third_party/sudachidict/LEGAL")) { rename { "SudachiDict-LEGAL.txt" } }

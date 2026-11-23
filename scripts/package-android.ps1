@@ -52,6 +52,7 @@ if (@($contents | Where-Object { $_ -like 'lib/*' }).Count -gt 0) { throw 'Unexp
 if ($RequireZenz) {
     foreach ($name in 'assets/zenz/arm64-v8a/libastra_zenz.so', 'assets/zenz/zenz-assets.sha256', 'assets/zenz/zenz-v3.2-xsmall-Q5_K_M.gguf',
             'assets/licenses/llama.cpp-LICENSE.txt', 'assets/licenses/llamafile-LICENSE.txt',
+            'assets/licenses/yarn-LICENSE.txt', 'assets/licenses/Unicode-LICENSE.txt',
             'assets/licenses/zenz-MODEL-NOTICE.txt', 'assets/licenses/zenz-LICENSE-Apache-2.0.txt') {
         if ($contents -notcontains $name) { throw "Missing zenz file: $name" }
     }
