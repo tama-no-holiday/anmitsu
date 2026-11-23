@@ -34,8 +34,11 @@ used for the main tables is not pinned (the script fetches the latest). `Unicode
 https://www.unicode.org/license.txt (Unicode License V3), added as conservative attribution coverage; this does not
 establish the tables' full provenance or that they are all Unicode 16.0.0. The source copies both into
 `assets/licenses/` and `-RequireZenz` requires both. The earlier unsigned verification APK (`44259e3e…`) had 15
-notice files; a candidate built from this source would have 17, which has not been built or checked yet. The existing
-signed APK (`2f454398…`, 13 notice files) is unchanged.
+notice files. An unsigned verification APK rebuilt from source after `f45c29e` (`7790bcfc…`, not for distribution)
+has 17, and its packaged `yarn-LICENSE.txt` and `Unicode-LICENSE.txt` match the source byte for byte; against
+`44259e3e…` it only adds those two files and changes `assets/licenses/THIRD-PARTY.md`, with the dex, model, dictionary
+and native library unchanged (see `docs/releases/v1.0.0-validation.md`, E.3). The existing signed APK (`2f454398…`,
+13 notice files) is unchanged, and no replacement signed APK has been prepared.
 
 **Licences.** anmitsu's own scorer and JNI code (`android/zenz-native`) is under the project's MIT licence
 ([LICENSE](../../LICENSE)). The zenz model keeps its own licence terms (labelling below) and llama.cpp/ggml keeps

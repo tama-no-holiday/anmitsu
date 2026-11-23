@@ -2,8 +2,9 @@
 
 Code: `HostContext.kt` (new), `AstraImeService.askField` / `rankingContext`, `CommittedContext.kt` (doc only), settings text.
 Tests: `HostContextTest` (8), `CommittedContextTest` "Asking the field" (13). Diagnostic: `ossCli context-learning-diag`.
-All inputs are synthetic. **Nothing here ran on a device.** The user approved: reads by the user's decision of 2026-11-02,
-a main-thread wait of at most 100 ms, no synchronous host query, no automatic switch to 2a.
+Inputs are fixed example strings. **Nothing here ran on a device.** Constraints decided on 2026-11-02: reads allowed,
+a main-thread wait of at most 100 ms, no synchronous host query, no automatic switch to 2a. Paths under `android/build/`
+and `artifacts/` are local build outputs, not distributed.
 
 ## What it does
 
@@ -105,7 +106,7 @@ Existing tests: every pre-0.1.30 editor still throws on any read. `TestIme.hostR
 | しかいをつとめます (A 司会, B 歯科医) | 私は歯医者です。 | -1.89 / -0.40 | 司会を務めます (dictionary order; learned B: 歯科医) |
 | しかいをつとめま | any | B not in the list | 司会を務めま (ま kept, Part A) |
 
-So with the sentence actually delivered, the model ranks 公園 first for the user's Docs example. The "neutral" control
+So with the sentence actually delivered, the model ranks 公園 first for the Docs example. The "neutral" control
 context also gives 公園 here, so this case shows that some context helps, not that the meaning of this one is used. Whether
 the phone delivers it depends on the field's flags and the host answering in 100 ms: unmeasured.
 
@@ -115,7 +116,7 @@ the phone delivers it depends on the field's flags and the host answering in 100
   pass `EditorPolicy`.
 - Behaviour of real editors with a selection, and of hosts that answer with stale text.
 - The first key of each composition can block the main thread up to 100 ms (plus thread start, included in the deadline).
-- If 2b misbehaves on the device, falling back to 2a is the user's decision; nothing switches automatically.
+- If 2b misbehaves on the device, falling back to 2a is a separate manual decision; nothing switches automatically.
 
 ## Run and package
 

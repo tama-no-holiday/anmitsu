@@ -4,7 +4,7 @@
 
 **Result: committed context no longer asks the host for text, on any thread. Getting context cannot wait on the app. Inserting text still takes what the host takes, and nothing here measures latency on a phone.** Unshipped, not committed, not checked on a device. versionName 0.1.28, versionCode 29.
 
-Code: `android/app/src/main/java/dev/astra/ime/CommittedContext.kt`, wired in `AstraImeService.kt`. Tests: `CommittedContextTest.kt`. The synchronous read and its 100 ms / 30 s cooldown are gone. Their evidence stays in `docs/ux-0.1.28.md`, marked as history.
+Code: `android/app/src/main/java/dev/astra/ime/CommittedContext.kt`, wired in `AstraImeService.kt`. Tests: `CommittedContextTest.kt`. The synchronous read and its 100 ms / 30 s cooldown are gone. Their evidence stays in `docs/ux-0.1.28.md`, marked as history. Paths under `android/build/` and `artifacts/` are local build outputs, not distributed.
 
 ## Sources of context
 
@@ -17,7 +17,7 @@ Nothing else. No `getTextBeforeCursor`, `getSurroundingText`, `getExtractedText`
 
 ## API levels
 
-Level checked in the SDK, `platforms/android-36/data/api-versions.xml`: `getInitialTextBeforeCursor(II)` has `since="30"`. The official website was not reachable from this session; the SDK's data is the same source lint uses.
+Level checked in the SDK, `platforms/android-36/data/api-versions.xml`: `getInitialTextBeforeCursor(II)` has `since="30"`. The official website was not reachable at the time; the SDK's data is the same source lint uses.
 
 | device | seed | context |
 |---|---|---|
@@ -72,14 +72,14 @@ Learning is untouched: on by default, a stored off respected, opt-out and clear 
 - **Not zero latency.** The guarantee covers context acquisition only. `commitText` and `setComposingText` still go to the host.
 - **A snapshot can hold a foreign span.** `EditorInfo` does not mark uncommitted text. The first report showing the span forgets it; until then it can be in the seed.
 - **Less context than the read gave.** No seed on API 26 to 29. One ⌫ on committed text loses all of it until the next commit. How often this happens is unknown. Hosts that send reports we do not expect lose the seed more often; WebView and Chrome are unverified.
-- **Ranking evidence is unchanged and indirect.** No model, rank or native change, so no evaluation was rerun, as agreed. `margin2` was judged with a prefix given outright, and how often a phone has that prefix now is not measured.
+- **Ranking evidence is unchanged and indirect.** No model, rank or native change, so no evaluation was rerun for this version. `margin2` was judged with a prefix given outright, and how often a phone has that prefix now is not measured.
 
 ## Coverage
 
 Real service, worker and `ZenzRanking`, fake editor, tiny dictionary, spy scorer. **This is wiring, not model accuracy, and JVM runs say nothing about phone timing.**
 
 - Every editor in `CommittedContextTest` throws on `getTextBeforeCursor`, `getTextAfterCursor`, `getSelectedText`, `getExtractedText` and `getCursorCapsMode`, so a read fails the test at once, not by inspecting source. `theEditorsHereReallyRefuseToBeRead` proves the guard fires. `getSurroundingText` and `takeSnapshot` do not exist on these SDKs, so a call would fail there too.
-- The user's two sentences, typed: 私はアナウンサーです。 and 私は歯医者です。 reach しかいをつとめます across their commits, once, with no read.
+- The two example sentences, typed: 私はアナウンサーです。 and 私は歯医者です。 reach しかいをつとめます across their commits, once, with no read.
 - Also covered: seeded prompt, null, throwing, longer and truncated snapshots, a cut pair, styled text, unknown cursor, selection, reading longer than the surface, late, coalesced and repeated reports, refused writes, a commit a filter dropped, cursor, selection, foreign span, external edit, span moved, restart, other field, repeated `EditorInfo`, hide and show, finish, delete, composition cancel, paste, line break, editor action, English and digit transitions, emoji offsets, protected fields, both switches, learning isolation, late results after a field change, a cursor move, a commit and a switch.
 - **API:** only SDK 28 and 30 are available offline. Real API 29 did not run. `api29IsTreatedAsBelowApi30EvenWithASnapshotPresent` sets `SDK_INT` to 29 on the SDK 30 runtime and checks that the method is not called. API 26 and 27 take the same branch, and did not run.
 - Not covered: any real host. Chrome, WebView and messaging apps report differently and are the main unknown. Exercised reports come from the fake, shaped after `BaseInputConnection`.

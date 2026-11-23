@@ -1,8 +1,8 @@
 # Context at the cursor, and learned phrases against it (0.1.29)
 
-**Result: the failure reproduced in the real service and is fixed there, in JVM tests with scores replayed from the real model. Two causes were confirmed and both had to be fixed. Which taps the user made, and what their phone had learned, are not known. Nothing here ran on a device.**
+**Result: the failure reproduced in the real service and is fixed there, in JVM tests with scores replayed from the real model. Two causes were confirmed and both had to be fixed. The input sequence behind the reported screen, and the learned state at that time, are not known. Nothing here ran on a device.**
 
-Code: `CommittedContext.kt`, `Learning.kt`, `ConversionWorker.kt`, `OssBackend.kt`, `AstraImeService.kt`, `ZenzRanking.kt`. Diagnostic: `ossCli context-learning-diag`, `data/context-learning-diag.tsv`. All inputs are synthetic.
+Code: `CommittedContext.kt`, `Learning.kt`, `ConversionWorker.kt`, `OssBackend.kt`, `AstraImeService.kt`, `ZenzRanking.kt`. Diagnostic: `ossCli context-learning-diag`, `data/context-learning-diag.tsv`. Inputs are fixed example strings; no field text or learning store from a device was used. Paths under `android/build/` and `artifacts/` are local build outputs, not distributed.
 
 ## The report
 
@@ -16,8 +16,8 @@ Typed 私はアナウンサーです, 私は歯医者です, しかいをつと�
 | A learned phrase is pinned first after ranking | **confirmed in code and test** | `LearningSnapshot.arrange` puts it at index 0 whatever the ranking said. `theFailureAsReported` gives `私はアナウンサーです。歯科医を務めます私は歯医者です。` on the old code, the reported text |
 | The model or dictionary put 歯科医 first | **ruled out for this input** | without learning it is never first, in any context (table below). It is in the list (dictionary rank 7, or 0 to 2 once learned) |
 | The dentist sentence was still context at the announcer cursor | **not the cause on a normal host** | a report that fits nothing forgets. Reachable only on a host whose old offsets do not continue, which the shadow ignored as overtaken. Closed anyway |
-| The user's phone had 歯科医を務めます learned as a phrase | **hypothesis** | it is the only route found to that screen at that cursor, and picking it in an earlier try would record it. The store was not looked at, and no device was involved |
-| The cursor was moved back | **hypothesis** | the layout suggests it; the taps are unknown |
+| 歯科医を務めます had been learned as a phrase in the reported state | **hypothesis** | it is the only route found to that screen at that cursor, and picking it in an earlier try would record it. No learning store was inspected, and no device was involved |
+| The cursor was moved back | **hypothesis** | the layout suggests it; the input sequence is unknown |
 
 ## Real model, isolated factors
 
@@ -102,7 +102,7 @@ Library `91a88be6…` from `android/build/zenz-android-0.1.28`, matching the loc
 
 **Frozen holdout, rerun as regression only, nothing tuned on it:** file hashes unchanged, `android/build/claude-artifacts/holdout-0.1.29.tsv` identical to `reports/context-policy-0.1.28-canonical-holdout.tsv`, 289 of 289 rows. That is expected and proves little: `rerank` did not change and the holdout has no learned phrases. `margin2` keeps its 60 -> 64 of 84.
 
-Mutation testing was not run, as agreed.
+Mutation testing was not run for this version.
 
 APK `artifacts/apk/anmitsu-0.1.29.apk`, 95,060,474 bytes, SHA-256 `e00be8d45e44989942794924d1ad4455e289586892c0d2cd5aad1938d83889a6`, versionCode 30, no permissions, arm64-v8a, min 26, target 36, zipalign -P 16 OK, v2 verified, signer `63564ca0…7fca527` unchanged. Library, model, `lexicon.bin`, `connectionId.dat` and the manifest match their locks. Against 0.1.28 only `AndroidManifest.xml`, `classes3/6/14.dex`, `resources.arsc` and signing files differ. It is 169 KB smaller than 0.1.28 although its entries are 10 KB larger: the difference is zip padding, not content. `anmitsu-0.1.28.apk` is unchanged; the old `build-info.json` is kept as `build-info-0.1.28.json`.
 
@@ -110,7 +110,7 @@ APK `artifacts/apk/anmitsu-0.1.29.apk`, 95,060,474 bytes, SHA-256 `e00be8d45e449
 
 1. The library loads and conversion works; it has never run on a device. Typing does not stall.
 2. **The reported case, without clearing learning:** in one field type 私はアナウンサーです。, a new line, 私は歯医者です。, tap back after the first 。 and type しかいをつとめます. Expect 司会を務めます first and 歯科医を務めます second. Then undo that input, tap after the second sentence, type it again: expect 歯科医を務めます first if it was learned, as the reported state suggests.
-3. In an empty field the same reading: a learned 歯科医を務めます stays first. If it does not, it was never learned, and the report's hypothesis is wrong.
+3. In an empty field the same reading: a learned 歯科医を務めます stays first. If it does not, it was never learned, and the learned-phrase hypothesis above is wrong.
 4. Back with ◀ instead of a tap: same result as 2.
 5. ⌫ one character at the moved cursor, then type: context still works, no stall.
 6. Select text, paste from the host's menu, send a message and keep typing: nothing odd in candidates; a wrong first candidate here means outdated context.

@@ -16,3 +16,12 @@ android/local.properties
 artifacts/apk/
 .claude/worktrees/
 .claude/settings.local.json
+
+# Local scaffold (untracked)
+/.astra/
+
+# Signing keys and keystores
+*.keystore
+*.jks
+*.p12
+*.pfx

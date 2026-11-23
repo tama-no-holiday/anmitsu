@@ -16,7 +16,7 @@ APKとレポートはこのcheckoutの `artifacts/apk/`（`anmitsu-1.0.0.apk`、
 
 ## GitHub Actions（手動のみ）
 
-現時点でGitHub上にworkflowはありません。`.github/workflows/baseline.yml` は `workflow_dispatch` のみで、push・PR・定期実行では動きません。AIのAPI呼び出しはなく、Actions内でClaudeは起動しません。secret・キャッシュ・成果物アップロードも使いません。
+このソースには手動実行用のworkflowの定義 `.github/workflows/baseline.yml` が含まれます。GitHub上への配置と、そこでの実行は確認していません。定義は `workflow_dispatch` のみで、push・PR・定期実行では動きません。AIのAPI呼び出しはなく、Actions内でClaudeは起動しません。secret・キャッシュ・成果物アップロードも使いません。
 
 手順（GitHubアカウントの利用量と、上限超過時に課金が止まる設定を確認した後に限る）:
 
@@ -31,4 +31,4 @@ APKとレポートはこのcheckoutの `artifacts/apk/`（`anmitsu-1.0.0.apk`、
 - fixture限定と完全なリリース（`-OssResources`、zenz、`assembleRelease`、`-Release`、利用者の署名、実機確認）は別物です。
 - 以前のdebug/releaseビルドで不安定な失敗がありました。CIで再発した場合は原因を調べ、無視や再試行で隠さないでください。
 - GitHub Actions上での実行とセットアップ（新規ランナーでのツールチェーン取得を含むコールドスタート）は、実際に実行するまで未検証です。ローカルでの確認は既存のツールチェーンを再利用したものです。
-- 自動保守は未導入です。main の保護ルールを設定するまで、AIによる main への書き込みは無効のままです。変更は作業ブランチとプルリクエストで反映する予定です。
+- 自動保守は未導入です。main の保護ルールが有効であることは確認していません（GitHub Free の非公開リポジトリでは使えない場合があり、先に公開などへの移行が必要になることがあります）。設定するまで、AIによる main への書き込みは無効のままです。変更は作業ブランチとプルリクエストで反映する予定です。

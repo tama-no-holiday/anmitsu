@@ -1,8 +1,8 @@
 # 0.1.34: whole mixed English candidates (A) and a composing caret the arrows move without committing (B)
 
-Branch `claude/committed-context-20261101`, on 09cd050 (0.1.33, which the parent has integrated and distributed
-privately). versionName 0.1.34, versionCode 35. **Nothing here ran on a device.** Model, dictionary, ranking strength,
-learning, native library, layouts, flicks, long-press and the number screens are unchanged.
+Based on 09cd050 (0.1.33). versionName 0.1.34, versionCode 35. **Nothing here ran on a device.** Model, dictionary, ranking strength,
+learning, native library, layouts, flicks, long-press and the number screens are unchanged. Paths under `artifacts/`
+are local build outputs, not distributed.
 
 Commits: `eda1192` (core caret), `711da94` (A + B in the service, tests), then the version/report commit. A and B share
 one commit because both rest on the new `EnglishWord` (entries with a caret) and the same service paths; splitting
@@ -98,7 +98,7 @@ mixed composition stays ≤ 96, distinct, whole, and has two-part combinations.
 
 `MixedCaretTest`, three tests written before any change, run on 09cd050 (`artifacts/repro-0.1.34.log`), 3 of 3 failed:
 - `mMinusOneHasCandidatesForTheWholeComposition`: timed out waiting for `M-1` (the strip had only `1` and its forms,
-  as in the user's screenshot).
+  matching the reported failure).
 - `anArrowInAnEnglishCompositionMovesItsCaretWithoutCommitting`, `anArrowInAKanaCompositionMovesItsCaretWithoutCommitting`:
   `composingStart` was -1 after one ◀, i.e. the composition had been committed.
 
