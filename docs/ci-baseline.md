@@ -40,12 +40,12 @@ APKとレポートはこのcheckoutの `artifacts/apk/`（`anmitsu-1.0.0.apk`、
 
 - `ANDROID_SDK_LICENSES_ACCEPTED` は秘密情報ではなく、所有者の同意を示すだけの値です。所有者が公式Android SDKの利用規約を読んで同意した後にだけ、Settings → Secrets and variables → Actions → Variables で `true` に設定してください。未設定の間、`fixture-ci` は説明付きで失敗します。
 - 外部forkからのPRでも、secretを使わない読み取り専用の `pull_request` で動きます。fork PRでリポジトリ変数が渡されるかは未確認です。渡されない場合は同意チェックで失敗します（安全側）。初回コントリビューターのworkflow実行に承認を求める設定も確認してください。
-- 現状（所有者確認済み）: リポジトリは公開 `tama-no-holiday/anmitsu`（main は 560d0cf、旧リポジトリは非公開 `anmitsu-private-archive`）。main のルール: PR必須・バイパスなし・削除と非fast-forward禁止。もう一つの更新制限ルールはリポジトリ管理者がPR経由でのみバイパス可。自動マージは無効。GITHUB_TOKEN の既定は `contents: read`、PR承認は不可。
-- **`pr-ci` はまだGitHub上で一度も実行していません。** 初回の成功を確認するまで、`fixture-ci` を必須チェック（required status check）に登録しないでください。成功後に、ジョブ名 `fixture-ci` を登録します。
+- 現状（所有者確認済み）: リポジトリは公開 `tama-no-holiday/anmitsu`（main は PR #1 のマージ時点で a80018c、旧リポジトリは非公開 `anmitsu-private-archive`）。main のルール: PR必須・バイパスなし・削除と非fast-forward禁止。もう一つの更新制限ルールはリポジトリ管理者がPR経由でのみバイパス可。自動マージは無効。GITHUB_TOKEN の既定は `contents: read`、PR承認は不可。
+- 実行状況（2026-11-25 確認）: `pr-ci` はPR #1（head `04aee82`）でGitHub上に実行され、[run 45587453489](https://github.com/tama-no-holiday/anmitsu/actions/runs/45587453489)・[run 45594535157](https://github.com/tama-no-holiday/anmitsu/actions/runs/45594535157)ともに成功しています。これはWindows上のfixture限定の結果で、製品辞書・モデル・実機の検証ではありません。`fixture-ci` を必須チェック（required status check）に登録するかどうかは所有者が判断します（登録状況は未確認）。
 
 ## 注意
 
 - fixture限定と完全なリリース（`-OssResources`、zenz、`assembleRelease`、`-Release`、利用者の署名、実機確認）は別物です。
 - 以前のdebug/releaseビルドで不安定な失敗がありました。CIで再発した場合は原因を調べ、無視や再試行で隠さないでください。
 - GitHub Actions上での実行とセットアップ（新規ランナーでのツールチェーン取得を含むコールドスタート）は、実際に実行するまで未検証です。ローカルでの確認は既存のツールチェーンを再利用したものです。
-- 自動保守は未導入です。設定手順は [cloud-maintenance.md](cloud-maintenance.md) を参照してください。変更は作業ブランチとプルリクエストで反映します。
+- クラウド自動保守は既存のGitHubアカウントで運用されます（[cloud-maintenance.md](cloud-maintenance.md)）。マージ・リリース・設定変更は所有者が行います。設定手順は [cloud-maintenance.md](cloud-maintenance.md) を参照してください。変更は作業ブランチとプルリクエストで反映します。
