@@ -7,15 +7,19 @@ The app loads them only after its CPU check (`android/app/src/main/java/dev/astr
 with the dictionary alone. No training or fine-tuning was done. Open licence questions are listed in
 [THIRD-PARTY.md](../../THIRD-PARTY.md); how to obtain and build the files is in [BUILDING.md](../../BUILDING.md) section 4.
 
-**Notices: the existing signed APK and the corrected source are not the same.**
+**Notices: the earlier signed APK and the current signed candidate are not the same.**
 
-- The existing signed 1.0.0 APK (SHA-256 `2f454398…`, unchanged) ships, for these files, only
+- The earlier signed 1.0.0 APK (SHA-256 `2f454398…`, unchanged, kept as a historical record, not the current
+  candidate) ships, for these files, only
   `zenz-LICENSE-Apache-2.0.txt` (from `Apache-2.0.txt` here), `llama.cpp-LICENSE.txt` and `llama.cpp-LICENSE-jsonhpp.txt`.
   None of its 13 notice files contains the Mozilla Foundation notice of llamafile sgemm or any CC BY-SA text or link.
 - The source now also copies `zenz-MODEL-NOTICE.txt` (model attribution, CC BY-SA 4.0 as currently labelled upstream)
   and `llamafile-LICENSE.txt` (below) into `assets/licenses/`, and `scripts/package-android.ps1 -RequireZenz` requires
-  both. A replacement signed distribution APK has not been prepared yet; the existing signed APK is unchanged, and any
-  local unsigned build made for verification is separate from it. The model, the `.so` and their hashes are unchanged.
+  both. The current signed candidate (SHA-256 `636d13fbc2dd280e7c2c79221c968df68697507cbcb87080af06176ecc0690a4`,
+  same signing certificate) is the unsigned `7790bcfc…` build below signed with the original key on 2026-11-23; it
+  carries the notices as of `f45c29e`, and later edits to repository documents do not change it. It is not published
+  and has not been installed on a device yet (`docs/releases/v1.0.0-validation.md`, E.4). The model, the `.so` and
+  their hashes are unchanged.
 
 **llamafile sgemm.** The 1.0.0 library (`91a88be6…`) exports `llamafile_sgemm` (`llvm-nm -D -C`); the build cache has
 `GGML_LLAMAFILE` on and Ninja compiles `ggml/src/ggml-cpu/llamafile/sgemm.cpp`. That file of llama.cpp tag `v0.7.0`
@@ -37,8 +41,9 @@ establish the tables' full provenance or that they are all Unicode 16.0.0. The s
 notice files. An unsigned verification APK rebuilt from source after `f45c29e` (`7790bcfc…`, not for distribution)
 has 17, and its packaged `yarn-LICENSE.txt` and `Unicode-LICENSE.txt` match the source byte for byte; against
 `44259e3e…` it only adds those two files and changes `assets/licenses/THIRD-PARTY.md`, with the dex, model, dictionary
-and native library unchanged (see `docs/releases/v1.0.0-validation.md`, E.3). The existing signed APK (`2f454398…`,
-13 notice files) is unchanged, and no replacement signed APK has been prepared.
+and native library unchanged (see `docs/releases/v1.0.0-validation.md`, E.3). The earlier signed APK (`2f454398…`,
+13 notice files) is unchanged; the current signed candidate `636d13fb…` (17 notice files) differs from `7790bcfc…`
+only by the `META-INF/` signing entries (E.4).
 
 **Licences.** anmitsu's own scorer and JNI code (`android/zenz-native`) is under the project's MIT licence
 ([LICENSE](../../LICENSE)). The zenz model keeps its own licence terms (labelling below) and llama.cpp/ggml keeps
@@ -66,9 +71,9 @@ A record of what the sources display, not a legal conclusion.
   code URLs). That notice states the model's licence only; the project's MIT licence does not replace it and is not
   changed by it. `Apache-2.0.txt` stays as the record of the label at the pinned revision; it is not the model's
   current licence and not treated as a sufficient notice on its own.
-- The existing signed 1.0.0 APK ships only `zenz-LICENSE-Apache-2.0.txt` for the model; it is unchanged. The corrected
-  notice reaches users only with a replacement signed distribution APK, which has not been prepared yet (local unsigned
-  verification builds are separate and are not distributed).
+- The earlier signed 1.0.0 APK (`2f454398…`) ships only `zenz-LICENSE-Apache-2.0.txt` for the model; it is unchanged.
+  The corrected notice is in the current signed candidate (`636d13fb…`) and reaches users only once that is
+  published, which has not happened yet.
 - How ku-nlp/gpt2-small-japanese-char relates to the shipped xsmall model is not established; the tokenizer name and
   the small model's metadata alone are not taken as evidence.
 
