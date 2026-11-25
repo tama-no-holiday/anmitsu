@@ -1,0 +1,73 @@
+# Fixture-only PR check. Not release quality. See docs/ci-baseline.md.
+# Requires repository variable ANDROID_SDK_LICENSES_ACCEPTED == 'true' (owner's
+# non-secret consent flag); otherwise the job FAILS (it is never skipped).
+name: pr-ci
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fixture-ci:
+    name: fixture-ci
+    runs-on: windows-2022
+    timeout-minutes: 35
+    steps:
+      - name: Android SDK license consent check
+        id: consent
+        shell: pwsh
+        env:
+          LICENSES_ACCEPTED: ${{ vars.ANDROID_SDK_LICENSES_ACCEPTED }}
+        run: |
+          if ($env:LICENSES_ACCEPTED -cne 'true') {
+            Write-Output '::error title=Android SDK license consent missing::Repository variable ANDROID_SDK_LICENSES_ACCEPTED is not exactly "true". A maintainer must read and accept the official Android SDK license terms, then set Settings > Secrets and variables > Actions > Variables > ANDROID_SDK_LICENSES_ACCEPTED = true. This check fails (does not skip) until then.'
+            exit 1
+          }
+
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+
+      - name: Setup pinned toolchain
+        id: setup
+        if: vars.ANDROID_SDK_LICENSES_ACCEPTED == 'true'
+        shell: pwsh
+        run: pwsh -NoProfile -File scripts/setup-android.ps1 -AcceptAndroidSdkLicenses
+
+      - name: Fixture-only baseline (tests, lint, debug APK, package checks)
+        id: baseline
+        shell: pwsh
+        run: pwsh -NoProfile -File scripts/ci-baseline.ps1
+
+      - name: Summary
+        if: always()
+        shell: pwsh
+        env:
+          CONSENT_OUTCOME: ${{ steps.consent.outcome }}
+          SETUP_OUTCOME: ${{ steps.setup.outcome }}
+          BASELINE_OUTCOME: ${{ steps.baseline.outcome }}
+        run: |
+          $lines = @(
+            '## fixture-ci: fixture-only PR check (NOT release quality)'
+            ''
+            "- license consent: $env:CONSENT_OUTCOME"
+            "- setup: $env:SETUP_OUTCOME"
+            "- baseline: $env:BASELINE_OUTCOME"
+            '- Tasks: :core:test :oss-converter:test :app:testDebugUnitTest :app:assembleDebug :app:lintDebug, then package-android.ps1 -Version 1.0.0'
+            '- Not covered: OSS dictionary, zenz/full model, release build, license/notice quality review, device testing.'
+            '- No retries or ignoreFailures. No cache, artifact upload, signing beyond the debug key, release or publishing.'
+          )
+          $report = 'artifacts/apk/ci-baseline-report.json'
+          if (Test-Path -LiteralPath $report) {
+            $lines += @('', '```json') + @(Get-Content -LiteralPath $report) + @('```')
+          }
+          $lines | Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY -Encoding utf8
